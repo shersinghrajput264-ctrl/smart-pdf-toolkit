@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Smart PDF Toolkit - Free online PDF and image tools">
-<title>Smart PDF Toolkit</title>
+<meta name="description" content="Smart PDF Toolkit - Free PDF and image tools">
+<meta name="theme-color" content="#3157d5">
+<title>Smart PDF Toolkit - Free PDF & Image Tools</title>
 
 <style>
 *{box-sizing:border-box}
@@ -12,155 +13,236 @@ html{scroll-behavior:smooth}
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:#f4f6fa;
-  color:#151923;
+  background:#f5f7fb;
+  color:#151a26
 }
+button,input,select{font:inherit}
 header{
-  background:#fff;
-  border-bottom:1px solid #ddd;
-  padding:18px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
   position:sticky;
   top:0;
   z-index:20;
-}
-.logo{
-  font-size:22px;
-  font-weight:700;
-}
-.logo span{margin-right:8px}
-.nav{font-size:17px;color:#333}
-.hero{
   background:#fff;
+  border-bottom:1px solid #e5e7eb
+}
+.nav{
+  max-width:1150px;
+  margin:auto;
+  padding:15px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+.logo{font-size:21px;font-weight:800}
+.navlinks{display:flex;gap:22px}
+.navlinks a{
+  text-decoration:none;
+  color:#252b35;
+  font-weight:600
+}
+.hero{
   text-align:center;
-  padding:75px 20px 65px;
+  background:#fff;
+  padding:65px 20px 75px
 }
 .hero h1{
-  font-size:48px;
-  margin:0 0 22px;
+  font-size:46px;
+  margin:0 0 15px
 }
 .hero p{
-  color:#666;
-  font-size:21px;
-  max-width:700px;
+  max-width:720px;
   margin:auto;
-  line-height:1.5;
+  color:#626a76;
+  font-size:19px;
+  line-height:1.5
 }
 .ad{
-  max-width:640px;
-  height:140px;
-  margin:35px auto;
+  max-width:900px;
+  min-height:110px;
+  margin:25px auto;
+  padding:15px 20px;
+  border:1px dashed #c7ccd5;
   background:#fff;
-  border:1px dashed #bbb;
   display:flex;
-  justify-content:center;
   align-items:center;
-  color:#888;
-  font-size:18px;
+  justify-content:center;
+  color:#888
 }
 .container{
-  max-width:1050px;
+  max-width:1150px;
   margin:auto;
-  padding:10px 20px 60px;
+  padding:15px 20px 60px
+}
+.section-title{
+  text-align:center;
+  margin:40px 0 25px
+}
+.section-title h2{
+  font-size:32px;
+  margin:0 0 8px
+}
+.section-title p{color:#69717c}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:22px
 }
 .card{
   background:#fff;
-  border-radius:24px;
-  padding:30px;
-  margin:25px 0;
-  box-shadow:0 8px 30px rgba(0,0,0,.07);
+  border:1px solid #edf0f5;
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 7px 25px rgba(0,0,0,.06)
 }
-.card h2{
-  margin-top:0;
+.card h3{
+  font-size:24px;
+  margin:0 0 8px
+}
+.card p{
+  color:#68717d;
+  line-height:1.45
+}
+.icon{
   font-size:30px;
+  margin-bottom:8px
 }
-.card p{color:#666}
+.filebox{
+  border:2px dashed #ccd3df;
+  background:#fafbfe;
+  border-radius:12px;
+  padding:18px;
+  margin:15px 0
+}
 input[type=file]{
   width:100%;
-  padding:18px;
-  border:1px solid #ccc;
-  border-radius:12px;
-  background:#fafafa;
-  font-size:16px;
+  font-size:15px
 }
-button{
+input[type=number],
+input[type=text],
+select{
   width:100%;
-  border:0;
-  border-radius:12px;
-  padding:16px;
-  margin-top:16px;
-  background:#315bd6;
-  color:#fff;
-  font-size:17px;
-  font-weight:700;
-  cursor:pointer;
+  padding:11px;
+  border:1px solid #ccd2dc;
+  border-radius:10px;
+  background:#fff
 }
-button:hover{background:#2449b8}
-button:disabled{
-  opacity:.55;
-  cursor:not-allowed;
+input[type=range]{width:100%}
+label{
+  display:block;
+  font-weight:700;
+  margin:10px 0 6px
 }
 .row{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:15px;
+  gap:12px
 }
-label{
-  display:block;
-  font-weight:700;
-  margin:15px 0 8px;
-}
-input[type=number],select{
+button{
   width:100%;
-  padding:13px;
-  border:1px solid #ccc;
-  border-radius:10px;
-  font-size:16px;
+  padding:14px;
+  border:0;
+  border-radius:11px;
+  background:#3157d5;
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:12px
+}
+button:hover{filter:brightness(.94)}
+button:disabled{
+  opacity:.55;
+  cursor:not-allowed
 }
 .preview{
-  max-width:100%;
-  max-height:350px;
-  display:block;
-  margin:20px auto;
-  border-radius:10px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(110px,1fr));
+  gap:10px;
+  margin-top:12px
 }
-.result{
-  margin-top:18px;
-  padding:15px;
-  border-radius:12px;
-  background:#eef4ff;
-  display:none;
-}
-.result a{
-  display:inline-block;
-  background:#315bd6;
-  color:white;
-  text-decoration:none;
-  padding:12px 18px;
+.preview img{
+  width:100%;
+  height:110px;
+  object-fit:cover;
   border-radius:9px;
-  margin-top:10px;
-  font-weight:700;
+  border:1px solid #ddd
+}
+.file-list{
+  font-size:14px;
+  color:#555;
+  margin-top:10px
+}
+.file-list div{
+  padding:5px 0;
+  border-bottom:1px solid #eee
 }
 .status{
-  margin-top:15px;
+  display:none;
+  margin-top:12px;
+  padding:12px;
+  border-radius:9px;
+  line-height:1.4
+}
+.status.show{display:block}
+.status.info{
+  background:#eef3ff;
+  color:#2446b8
+}
+.status.success{
+  background:#effbf2;
+  color:#176b2b
+}
+.status.error{
+  background:#fff0f0;
+  color:#a21d1d
+}
+.library-status{
+  max-width:900px;
+  margin:15px auto;
+  padding:12px 20px;
+  border-radius:10px;
   text-align:center;
-  font-weight:600;
+  background:#fff7df;
+  color:#795b00;
+  display:none
+}
+.info{
+  background:#fff;
+  border-radius:18px;
+  padding:25px;
+  line-height:1.7;
+  box-shadow:0 5px 20px rgba(0,0,0,.05)
 }
 footer{
-  background:#171a22;
+  background:#111827;
   color:#fff;
-  text-align:center;
-  padding:35px 20px;
+  padding:40px 20px
 }
-.small{font-size:14px;color:#888}
-@media(max-width:650px){
+.footer{
+  max-width:1150px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:30px
+}
+.footer a{
+  color:#d8dce5;
+  text-decoration:none;
+  display:block;
+  margin:8px 0
+}
+.copy{
+  text-align:center;
+  border-top:1px solid #343b48;
+  margin-top:30px;
+  padding-top:20px;
+  color:#aeb5c1
+}
+@media(max-width:760px){
   .hero h1{font-size:36px}
-  .hero p{font-size:18px}
-  .card{padding:22px}
+  .grid{grid-template-columns:1fr}
   .row{grid-template-columns:1fr}
-  header{padding:16px 20px}
+  .navlinks{display:none}
+  .footer{grid-template-columns:1fr}
+  .card{padding:20px}
 }
 </style>
 </head>
@@ -168,124 +250,351 @@ footer{
 <body>
 
 <header>
-  <div class="logo"><span>📄</span>Smart PDF Toolkit</div>
-  <div class="nav">Free Tools</div>
+<div class="nav">
+<div class="logo">📄 Smart PDF Toolkit</div>
+<div class="navlinks">
+<a href="#tools">Tools</a>
+<a href="#about">About</a>
+<a href="#privacy">Privacy</a>
+<a href="#contact">Contact</a>
+<a href="#terms">Terms</a>
+</div>
+</div>
 </header>
 
 <section class="hero">
-  <h1>PDF & Image Tools</h1>
-  <p>Convert, compress, resize and download your files easily.</p>
+<h1>PDF & Image Tools</h1>
+<p>
+Free, simple and mobile-friendly tools for converting,
+merging, splitting, compressing and resizing files.
+</p>
 </section>
+
+<div id="libraryStatus" class="library-status">
+PDF tools are loading. Please wait a moment...
+</div>
 
 <div class="ad">Advertisement</div>
 
 <main class="container">
 
-  <!-- IMAGE TO PDF -->
-  <section class="card">
-    <h2>🖼️ Image → PDF</h2>
-    <p>Select one or more JPG, JPEG or PNG images and create a PDF.</p>
+<div class="section-title" id="tools">
+<h2>All Tools</h2>
+<p>Your files are processed directly in your browser whenever possible.</p>
+</div>
 
-    <input id="pdfImages" type="file" accept="image/jpeg,image/png" multiple>
+<div class="grid">
 
-    <button id="createPdfBtn">Create PDF</button>
+<!-- IMAGE TO PDF -->
+<section class="card">
+<div class="icon">🖼️</div>
+<h3>Image → PDF</h3>
+<p>Convert one or multiple JPG, PNG or WebP images into one PDF.</p>
 
-    <div id="pdfStatus" class="status"></div>
+<div class="filebox">
+<input id="imagePdfFiles" type="file" accept="image/*" multiple>
+</div>
 
-    <div id="pdfResult" class="result">
-      <b>PDF created successfully.</b><br>
-      <a id="pdfDownload" download="smart-pdf.pdf">Download PDF</a>
-    </div>
-  </section>
+<div id="imagePdfPreview" class="preview"></div>
 
-  <!-- COMPRESS -->
-  <section class="card">
-    <h2>📉 Compress Image</h2>
-    <p>Reduce image size directly in your browser.</p>
+<div class="row">
+<div>
+<label>Page</label>
+<select id="imagePdfPage">
+<option value="a4">A4</option>
+<option value="fit">Fit image</option>
+</select>
+</div>
 
-    <input id="compressFile" type="file" accept="image/jpeg,image/png">
+<div>
+<label>Orientation</label>
+<select id="imagePdfOrientation">
+<option value="auto">Auto</option>
+<option value="portrait">Portrait</option>
+<option value="landscape">Landscape</option>
+</select>
+</div>
+</div>
 
-    <label for="quality">Quality</label>
-    <input id="quality" type="range" min="20" max="95" value="70">
+<button id="imagePdfBtn">Create PDF</button>
+<div id="imagePdfStatus" class="status"></div>
+</section>
 
-    <div style="text-align:center;margin-top:8px">
-      Quality: <b id="qualityValue">70%</b>
-    </div>
 
-    <button id="compressBtn">Compress Image</button>
+<!-- MERGE PDF -->
+<section class="card">
+<div class="icon">📚</div>
+<h3>Merge PDF</h3>
+<p>Combine multiple PDF files into one PDF.</p>
 
-    <div id="compressStatus" class="status"></div>
+<div class="filebox">
+<input id="mergeFiles" type="file" accept="application/pdf" multiple>
+</div>
 
-    <div id="compressResult" class="result">
-      <b id="compressInfo"></b><br>
-      <a id="compressDownload">Download Compressed Image</a>
-    </div>
-  </section>
+<div id="mergeList" class="file-list"></div>
 
-  <!-- RESIZE -->
-  <section class="card">
-    <h2>📐 Resize Image</h2>
-    <p>Resize an image to your required dimensions.</p>
+<button id="mergeBtn">Merge PDFs</button>
+<div id="mergeStatus" class="status"></div>
+</section>
 
-    <input id="resizeFile" type="file" accept="image/jpeg,image/png">
 
-    <div class="row">
-      <div>
-        <label for="resizeWidth">Width (px)</label>
-        <input id="resizeWidth" type="number" placeholder="1200">
-      </div>
+<!-- SPLIT PDF -->
+<section class="card">
+<div class="icon">✂️</div>
+<h3>Split PDF</h3>
+<p>Extract one selected page from a PDF.</p>
 
-      <div>
-        <label for="resizeHeight">Height (px)</label>
-        <input id="resizeHeight" type="number" placeholder="800">
-      </div>
-    </div>
+<div class="filebox">
+<input id="splitFile" type="file" accept="application/pdf">
+</div>
 
-    <label>
-      <input id="keepRatio" type="checkbox" checked>
-      Keep aspect ratio
-    </label>
+<label>Page number</label>
+<input id="splitPage" type="number" min="1" placeholder="Example: 2">
 
-    <button id="resizeBtn">Resize Image</button>
+<button id="splitBtn">Extract Page</button>
+<div id="splitStatus" class="status"></div>
+</section>
 
-    <div id="resizeStatus" class="status"></div>
 
-    <div id="resizeResult" class="result">
-      <b>Image resized successfully.</b><br>
-      <a id="resizeDownload">Download Resized Image</a>
-    </div>
-  </section>
+<!-- PDF TO IMAGE -->
+<section class="card">
+<div class="icon">📄</div>
+<h3>PDF → Image</h3>
+<p>Convert the first page of a PDF to a PNG image.</p>
 
-  <!-- IMAGE CONVERTER -->
-  <section class="card">
-    <h2>🔄 Image Converter</h2>
-    <p>Convert JPG/PNG images between common formats.</p>
+<div class="filebox">
+<input id="pdfImageFile" type="file" accept="application/pdf">
+</div>
 
-    <input id="convertFile" type="file" accept="image/jpeg,image/png">
+<button id="pdfImageBtn">Convert to PNG</button>
+<div id="pdfImageStatus" class="status"></div>
+</section>
 
-    <label for="convertFormat">Output format</label>
-    <select id="convertFormat">
-      <option value="image/jpeg">JPG</option>
-      <option value="image/png">PNG</option>
-      <option value="image/webp">WEBP</option>
-    </select>
 
-    <button id="convertBtn">Convert Image</button>
+<!-- COMPRESS IMAGE -->
+<section class="card">
+<div class="icon">📉</div>
+<h3>Compress Image</h3>
+<p>Reduce image file size with adjustable quality.</p>
 
-    <div id="convertStatus" class="status"></div>
+<div class="filebox">
+<input id="compressFile" type="file" accept="image/*">
+</div>
 
-    <div id="convertResult" class="result">
-      <b>Conversion completed.</b><br>
-      <a id="convertDownload">Download Converted Image</a>
-    </div>
-  </section>
+<label>
+Quality:
+<span id="qualityValue">70%</span>
+</label>
+
+<input id="quality" type="range" min="20" max="95" value="70">
+
+<button id="compressBtn">Compress Image</button>
+<div id="compressStatus" class="status"></div>
+</section>
+
+
+<!-- RESIZE IMAGE -->
+<section class="card">
+<div class="icon">📐</div>
+<h3>Resize Image</h3>
+<p>Resize an image while keeping its aspect ratio.</p>
+
+<div class="filebox">
+<input id="resizeFile" type="file" accept="image/*">
+</div>
+
+<div class="row">
+<div>
+<label>Width (px)</label>
+<input id="resizeWidth" type="number" min="50" max="10000" value="1200">
+</div>
+
+<div>
+<label>Format</label>
+<select id="resizeFormat">
+<option value="image/jpeg">JPG</option>
+<option value="image/png">PNG</option>
+<option value="image/webp">WEBP</option>
+</select>
+</div>
+</div>
+
+<button id="resizeBtn">Resize & Download</button>
+<div id="resizeStatus" class="status"></div>
+</section>
+
+
+<!-- IMAGE CONVERTER -->
+<section class="card">
+<div class="icon">🔄</div>
+<h3>JPG / PNG / WebP</h3>
+<p>Convert images between common formats.</p>
+
+<div class="filebox">
+<input id="convertFile" type="file" accept="image/*">
+</div>
+
+<label>Convert to</label>
+
+<select id="convertFormat">
+<option value="image/jpeg">JPG</option>
+<option value="image/png">PNG</option>
+<option value="image/webp">WebP</option>
+</select>
+
+<button id="convertBtn">Convert & Download</button>
+<div id="convertStatus" class="status"></div>
+</section>
+
+
+<!-- WATERMARK -->
+<section class="card">
+<div class="icon">✏️</div>
+<h3>Image Watermark</h3>
+<p>Add text to the centre of an image.</p>
+
+<div class="filebox">
+<input id="watermarkFile" type="file" accept="image/*">
+</div>
+
+<input
+id="watermarkText"
+type="text"
+placeholder="Enter watermark text"
+>
+
+<button id="watermarkBtn">Add Text & Download</button>
+<div id="watermarkStatus" class="status"></div>
+</section>
+
+</div>
+
+<div class="ad">Advertisement</div>
+
+
+<section id="about">
+<div class="section-title">
+<h2>About</h2>
+</div>
+
+<div class="info">
+Smart PDF Toolkit is a browser-based collection of useful
+PDF and image tools. The tools are designed to work on
+Android phones, tablets and desktop browsers.
+</div>
+</section>
+
+
+<section id="privacy">
+<div class="section-title">
+<h2>Privacy Policy</h2>
+</div>
+
+<div class="info">
+
+<p><strong>Last updated:</strong> 28 August 2026</p>
+
+<p>
+Smart PDF Toolkit processes supported files directly inside
+your browser. Files selected for the tools are not intentionally
+uploaded to our own server.
+</p>
+
+<p>
+Third-party libraries may be loaded from public CDNs for PDF
+processing. Those services may have their own policies.
+</p>
+
+<p>
+Do not upload highly sensitive information unless you are
+comfortable using a browser-based tool.
+</p>
+
+</div>
+</section>
+
+
+<section id="contact">
+<div class="section-title">
+<h2>Contact Us</h2>
+</div>
+
+<div class="info">
+
+<p>
+For questions, bug reports, suggestions or other
+website-related requests, please contact us by email.
+</p>
+
+<p>
+<strong>Email:</strong>
+<a href="mailto:shersinghrajput264@gmail.com">
+shersinghrajput264@gmail.com
+</a>
+</p>
+
+</div>
+</section>
+
+
+<section id="terms">
+<div class="section-title">
+<h2>Terms & Conditions</h2>
+</div>
+
+<div class="info">
+
+<p><strong>Last updated:</strong> 28 August 2026</p>
+
+<p>
+Smart PDF Toolkit provides browser-based PDF and image
+utilities for general use.
+</p>
+
+<p>
+You are responsible for the files you choose to process
+and for keeping backups of important documents.
+</p>
+
+<p>
+You agree not to use the website for unlawful activity or
+to process content that you do not have the right to use.
+</p>
+
+</div>
+</section>
 
 </main>
 
+
 <footer>
-  <div style="font-size:20px;font-weight:bold">📄 Smart PDF Toolkit</div>
-  <p>Simple, fast and browser-based file tools.</p>
-  <div class="small">Your files are processed locally in your browser.</div>
+<div class="footer">
+
+<div>
+<h3>📄 Smart PDF Toolkit</h3>
+<p>Free PDF and image utilities for everyday use.</p>
+</div>
+
+<div>
+<h3>Tools</h3>
+<a href="#tools">Image → PDF</a>
+<a href="#tools">Merge PDF</a>
+<a href="#tools">Split PDF</a>
+<a href="#tools">Compress Image</a>
+</div>
+
+<div>
+<h3>Information</h3>
+<a href="#about">About</a>
+<a href="#privacy">Privacy</a>
+<a href="#contact">Contact</a>
+</div>
+
+</div>
+
+<div class="copy">
+© <span id="year"></span> Smart PDF Toolkit
+</div>
 </footer>
 
 
@@ -293,328 +602,758 @@ footer{
 "use strict";
 
 /* =========================================================
-   COMMON HELPERS
+   BASIC HELPERS
 ========================================================= */
 
-function loadImage(file){
-  return new Promise(function(resolve,reject){
-    var img = new Image();
-    var url = URL.createObjectURL(file);
+const $ = id => document.getElementById(id);
 
-    img.onload = function(){
-      URL.revokeObjectURL(url);
-      resolve(img);
-    };
+$("year").textContent = new Date().getFullYear();
 
-    img.onerror = function(){
-      URL.revokeObjectURL(url);
-      reject(new Error("Unable to read image."));
-    };
+function status(id,msg,type="info"){
+    const e = $(id);
+    if(!e) return;
 
-    img.src = url;
-  });
+    e.textContent = msg;
+    e.className = "status show " + type;
 }
 
-function canvasToBlob(canvas,type,quality){
-  return new Promise(function(resolve,reject){
-    canvas.toBlob(function(blob){
-      if(blob) resolve(blob);
-      else reject(new Error("Could not create image."));
-    },type,quality);
-  });
+function download(blob,name){
+
+    if(!blob){
+        throw new Error("No file generated.");
+    }
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = name;
+
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    setTimeout(() => {
+        URL.revokeObjectURL(url);
+    },3000);
 }
 
-function downloadBlob(blob,filename,mime){
-  var url = URL.createObjectURL(blob);
-  var a = document.createElement("a");
+function cleanName(name,fallback){
 
-  a.href = url;
-  a.download = filename;
+    let n = (name || fallback)
+        .replace(/\.[^.]+$/,"")
+        .replace(/[^a-z0-9_-]/gi,"_");
 
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-
-  setTimeout(function(){
-    URL.revokeObjectURL(url);
-  },1000);
+    return n.slice(0,70) || fallback;
 }
 
-function setStatus(id,text){
-  document.getElementById(id).textContent=text;
+function imageLoad(file){
+
+    return new Promise((resolve,reject)=>{
+
+        if(!file || !file.type.startsWith("image/")){
+            reject(new Error("Please select a valid image."));
+            return;
+        }
+
+        const url = URL.createObjectURL(file);
+
+        const img = new Image();
+
+        img.onload = () => {
+            URL.revokeObjectURL(url);
+            resolve(img);
+        };
+
+        img.onerror = () => {
+            URL.revokeObjectURL(url);
+            reject(new Error("Image could not be read."));
+        };
+
+        img.src = url;
+    });
 }
+
+function imageCanvas(img,max=2200){
+
+    const scale = Math.min(
+        max / Math.max(img.naturalWidth,img.naturalHeight),
+        1
+    );
+
+    const c = document.createElement("canvas");
+
+    c.width = Math.max(
+        1,
+        Math.round(img.naturalWidth * scale)
+    );
+
+    c.height = Math.max(
+        1,
+        Math.round(img.naturalHeight * scale)
+    );
+
+    const ctx = c.getContext("2d",{alpha:false});
+
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(0,0,c.width,c.height);
+
+    ctx.drawImage(
+        img,
+        0,
+        0,
+        c.width,
+        c.height
+    );
+
+    return c;
+}
+
 
 /* =========================================================
-   QUALITY SLIDER
+   LOAD PDF LIBRARIES SAFELY
 ========================================================= */
 
-document.getElementById("quality").addEventListener("input",function(){
-  document.getElementById("qualityValue").textContent=this.value+"%";
+function loadScript(src){
+
+    return new Promise((resolve,reject)=>{
+
+        const s = document.createElement("script");
+
+        s.src = src;
+        s.async = true;
+
+        s.onload = () => resolve();
+        s.onerror = () => reject(
+            new Error("Library failed to load.")
+        );
+
+        document.head.appendChild(s);
+    });
+}
+
+async function loadLibraries(){
+
+    const notice = $("libraryStatus");
+
+    notice.style.display = "block";
+    notice.textContent =
+        "PDF tools are loading...";
+
+    try{
+
+        await loadScript(
+            "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+        );
+
+        await loadScript(
+            "https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"
+        );
+
+        await loadScript(
+            "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"
+        );
+
+        if(window.pdfjsLib){
+
+            window.pdfjsLib.GlobalWorkerOptions.workerSrc =
+                "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+        }
+
+        notice.textContent =
+            "PDF tools are ready.";
+
+        setTimeout(()=>{
+            notice.style.display = "none";
+        },2000);
+
+    }catch(error){
+
+        console.error(error);
+
+        notice.style.display = "block";
+
+        notice.textContent =
+            "PDF libraries could not load. Image tools will still work. Check internet connection and refresh the page.";
+    }
+}
+
+loadLibraries();
+
+
+/* =========================================================
+   IMAGE PREVIEW
+========================================================= */
+
+$("imagePdfFiles").addEventListener("change",()=>{
+
+    const preview = $("imagePdfPreview");
+
+    preview.innerHTML = "";
+
+    [...$("imagePdfFiles").files].forEach(file=>{
+
+        const url = URL.createObjectURL(file);
+
+        const img = document.createElement("img");
+
+        img.src = url;
+
+        img.onload = ()=>{
+            URL.revokeObjectURL(url);
+        };
+
+        preview.appendChild(img);
+    });
 });
 
 
 /* =========================================================
-   IMAGE -> PDF
-   Creates a basic valid PDF without external libraries.
+   MERGE LIST
 ========================================================= */
 
-function escapePdfText(text){
-  return text
-    .replace(/\\/g,"\\\\")
-    .replace(/\(/g,"\\(")
-    .replace(/\)/g,"\\)");
-}
+$("mergeFiles").addEventListener("change",()=>{
 
-async function createPdfFromImages(files){
+    const list = $("mergeList");
 
-  var pages=[];
-  var objects=[];
-  var xref=[];
-  var chunks=[];
+    list.innerHTML = "";
 
-  var pdf="%PDF-1.4\n%\xFF\xFF\xFF\xFF\n";
+    [...$("mergeFiles").files].forEach((file,index)=>{
 
-  function addObject(content){
-    objects.push(content);
-    return objects.length;
-  }
+        const div = document.createElement("div");
 
-  for(var i=0;i<files.length;i++){
+        div.textContent =
+            (index + 1) + ". " + file.name;
 
-    var img=await loadImage(files[i]);
-
-    var canvas=document.createElement("canvas");
-
-    var max=1600;
-    var scale=Math.min(1,max/Math.max(img.width,img.height));
-
-    canvas.width=Math.max(1,Math.round(img.width*scale));
-    canvas.height=Math.max(1,Math.round(img.height*scale));
-
-    var ctx=canvas.getContext("2d");
-    ctx.drawImage(img,0,0,canvas.width,canvas.height);
-
-    var jpg=await canvasToBlob(canvas,"image/jpeg",0.90);
-    var buffer=await jpg.arrayBuffer();
-
-    var bytes=new Uint8Array(buffer);
-
-    var width=canvas.width;
-    var height=canvas.height;
-
-    pages.push({
-      width:width,
-      height:height,
-      bytes:bytes
+        list.appendChild(div);
     });
-  }
-
-  var catalogId=addObject("");
-  var pagesId=addObject("");
-
-  var pageIds=[];
-  var imageIds=[];
-  var contentIds=[];
-
-  pages.forEach(function(page){
-
-    var imageId=addObject("");
-    imageIds.push(imageId);
-
-    var contentId=addObject("");
-    contentIds.push(contentId);
-
-    var pageId=addObject("");
-    pageIds.push(pageId);
-  });
-
-  /* Build PDF objects */
-
-  pages.forEach(function(page,index){
-
-    var imageId=imageIds[index];
-    var contentId=contentIds[index];
-    var pageId=pageIds[index];
-
-    objects[imageId-1]=
-      "<< /Type /XObject" +
-      " /Subtype /Image" +
-      " /Width "+page.width +
-      " /Height "+page.height +
-      " /ColorSpace /DeviceRGB" +
-      " /BitsPerComponent 8" +
-      " /Filter /DCTDecode" +
-      " /Length "+page.bytes.length +
-      " >>\nstream\n";
-
-    objects[imageId-1]={
-      header:objects[imageId-1],
-      data:page.bytes
-    };
-
-    var stream=
-      "q\n"+
-      page.width+" 0 0 "+page.height+" 0 0 cm\n"+
-      "/Im0 Do\n"+
-      "Q\n";
-
-    objects[contentId-1]=
-      "<< /Length "+stream.length+" >>\n"+
-      "stream\n"+
-      stream+
-      "endstream";
-
-    objects[pageId-1]=
-      "<< /Type /Page"+
-      " /Parent "+pagesId+" 0 R"+
-      " /MediaBox [0 0 "+page.width+" "+page.height+"]"+
-      " /Resources << /XObject << /Im0 "+imageId+" 0 R >> >>"+
-      " /Contents "+contentId+" 0 R >>";
-  });
-
-  objects[pagesId-1]=
-    "<< /Type /Pages"+
-    " /Kids ["+
-    pageIds.map(function(id){return id+" 0 R";}).join(" ")+
-    "] /Count "+pageIds.length+" >>";
-
-  objects[catalogId-1]=
-    "<< /Type /Catalog /Pages "+pagesId+" 0 R >>";
-
-  /* Convert strings + binary image data into bytes */
-
-  function strBytes(str){
-    var arr=new Uint8Array(str.length);
-    for(var i=0;i<str.length;i++){
-      arr[i]=str.charCodeAt(i)&255;
-    }
-    return arr;
-  }
-
-  var output=[];
-  var offset=pdf.length;
-
-  output.push(strBytes(pdf));
-
-  for(var n=0;n<objects.length;n++){
-
-    xref[n+1]=offset;
-
-    var obj=objects[n];
-
-    if(typeof obj==="string"){
-
-      var data=
-        (n+1)+" 0 obj\n"+
-        obj+
-        "\nendobj\n";
-
-      var b=strBytes(data);
-      output.push(b);
-      offset+=b.length;
-
-    }else{
-
-      var head=
-        (n+1)+" 0 obj\n"+
-        obj.header;
-
-      var hb=strBytes(head);
-
-      output.push(hb);
-      offset+=hb.length;
-
-      output.push(obj.data);
-      offset+=obj.data.length;
-
-      var tail=strBytes("\nendstream\nendobj\n");
-      output.push(tail);
-      offset+=tail.length;
-    }
-  }
-
-  var startxref=offset;
-
-  var xrefText=
-    "xref\n"+
-    "0 "+(objects.length+1)+"\n"+
-    "0000000000 65535 f \n";
-
-  for(var x=1;x<=objects.length;x++){
-    xrefText+=String(xref[x]).padStart(10,"0")+" 00000 n \n";
-  }
-
-  xrefText+=
-    "trailer\n"+
-    "<< /Size "+(objects.length+1)+" /Root "+catalogId+" 0 R >>\n"+
-    "startxref\n"+
-    startxref+
-    "\n%%EOF";
-
-  output.push(strBytes(xrefText));
-
-  var total=0;
-
-  output.forEach(function(b){
-    total+=b.length;
-  });
-
-  var finalBytes=new Uint8Array(total);
-  var position=0;
-
-  output.forEach(function(b){
-    finalBytes.set(b,position);
-    position+=b.length;
-  });
-
-  return new Blob([finalBytes],{type:"application/pdf"});
-}
+});
 
 
 /* =========================================================
-   CREATE PDF BUTTON
+   IMAGE TO PDF
 ========================================================= */
 
-document.getElementById("createPdfBtn").addEventListener("click",async function(){
+$("imagePdfBtn").addEventListener("click",async()=>{
 
-  var btn=this;
-  var input=document.getElementById("pdfImages");
-  var result=document.getElementById("pdfResult");
-  var link=document.getElementById("pdfDownload");
+    const files = [...$("imagePdfFiles").files];
+    const btn = $("imagePdfBtn");
 
-  if(!input.files.length){
-    setStatus("pdfStatus","Please select at least one image.");
-    return;
-  }
+    if(!files.length){
 
-  btn.disabled=true;
-  result.style.display="none";
-  setStatus("pdfStatus","Creating PDF...");
+        status(
+            "imagePdfStatus",
+            "Please select at least one image.",
+            "error"
+        );
 
-  try{
+        return;
+    }
 
-    var pdf=await createPdfFromImages(Array.from(input.files));
+    if(!window.jspdf || !window.jspdf.jsPDF){
 
-    var url=URL.createObjectURL(pdf);
+        status(
+            "imagePdfStatus",
+            "PDF engine is still loading. Please wait 2-3 seconds and try again.",
+            "error"
+        );
 
-    link.href=url;
-    link.download="smart-pdf.pdf";
+        return;
+    }
 
-    result.style.display="block";
+    btn.disabled = true;
 
-    setStatus(
-      "pdfStatus",
-      "PDF ready — "+input.files.length+" image(s) added."
-    );
+    try{
 
-  }catch(error){
+        const jsPDF = window.jspdf.jsPDF;
 
-    console.error(error);
-    setStatus("pdfStatus","Error: "+error.message);
+        let pdf = null;
 
-  }finally{
-    btn.disabled=false;
-  }
+        for(let i=0;i<files.length;i++){
+
+            status(
+                "imagePdfStatus",
+                "Processing image " +
+                (i+1) +
+                " of " +
+                files.length +
+                "..."
+            );
+
+            const img = await imageLoad(files[i]);
+
+            const iw = img.naturalWidth;
+            const ih = img.naturalHeight;
+
+            let orientation =
+                $("imagePdfOrientation").value;
+
+            if(orientation === "auto"){
+
+                orientation =
+                    iw >= ih ?
+                    "landscape" :
+                    "portrait";
+            }
+
+            const fit =
+                $("imagePdfPage").value === "fit";
+
+            let pw = 210;
+            let ph = 297;
+
+            if(orientation === "landscape"){
+
+                const temp = pw;
+                pw = ph;
+                ph = temp;
+            }
+
+            if(fit){
+
+                const scale =
+                    Math.min(
+                        180 / Math.max(iw,ih),
+                        1
+                    );
+
+                pw = Math.max(
+                    50,
+                    iw * scale * 0.264583
+                );
+
+                ph = Math.max(
+                    50,
+                    ih * scale * 0.264583
+                );
+            }
+
+            if(!pdf){
+
+                pdf = new jsPDF({
+                    orientation:orientation,
+                    unit:"mm",
+                    format:fit ? [pw,ph] : "a4",
+                    compress:true
+                });
+
+            }else{
+
+                pdf.addPage(
+                    fit ? [pw,ph] : "a4",
+                    orientation
+                );
+            }
+
+            const W =
+                pdf.internal.pageSize.getWidth();
+
+            const H =
+                pdf.internal.pageSize.getHeight();
+
+            const margin =
+                fit ? 2 : 6;
+
+            const ratio =
+                Math.min(
+                    (W - 2*margin) / iw,
+                    (H - 2*margin) / ih
+                );
+
+            const dw = iw * ratio;
+            const dh = ih * ratio;
+
+            const canvas =
+                imageCanvas(img);
+
+            const data =
+                canvas.toDataURL(
+                    "image/jpeg",
+                    0.88
+                );
+
+            pdf.addImage(
+                data,
+                "JPEG",
+                (W-dw)/2,
+                (H-dh)/2,
+                dw,
+                dh,
+                undefined,
+                "FAST"
+            );
+        }
+
+        pdf.save(
+            "smart-pdf-toolkit.pdf"
+        );
+
+        status(
+            "imagePdfStatus",
+            "PDF created successfully.",
+            "success"
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        status(
+            "imagePdfStatus",
+            "PDF creation failed: " +
+            error.message,
+            "error"
+        );
+
+    }finally{
+
+        btn.disabled = false;
+    }
+});
+
+
+/* =========================================================
+   MERGE PDF
+========================================================= */
+
+$("mergeBtn").addEventListener("click",async()=>{
+
+    const files =
+        [...$("mergeFiles").files];
+
+    const btn =
+        $("mergeBtn");
+
+    if(files.length < 2){
+
+        status(
+            "mergeStatus",
+            "Please select at least 2 PDF files.",
+            "error"
+        );
+
+        return;
+    }
+
+    if(!window.PDFLib){
+
+        status(
+            "mergeStatus",
+            "PDF engine is still loading. Please wait and try again.",
+            "error"
+        );
+
+        return;
+    }
+
+    btn.disabled = true;
+
+    try{
+
+        const merged =
+            await PDFLib.PDFDocument.create();
+
+        for(let i=0;i<files.length;i++){
+
+            status(
+                "mergeStatus",
+                "Reading PDF " +
+                (i+1) +
+                " of " +
+                files.length +
+                "..."
+            );
+
+            const bytes =
+                await files[i].arrayBuffer();
+
+            const src =
+                await PDFLib.PDFDocument.load(bytes);
+
+            const pages =
+                await merged.copyPages(
+                    src,
+                    src.getPageIndices()
+                );
+
+            pages.forEach(page=>{
+                merged.addPage(page);
+            });
+        }
+
+        const result =
+            await merged.save();
+
+        download(
+            new Blob(
+                [result],
+                {type:"application/pdf"}
+            ),
+            "merged-smart-pdf.pdf"
+        );
+
+        status(
+            "mergeStatus",
+            "PDFs merged successfully.",
+            "success"
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        status(
+            "mergeStatus",
+            "Merge failed. The PDF may be encrypted or invalid.",
+            "error"
+        );
+
+    }finally{
+
+        btn.disabled = false;
+    }
+});
+
+
+/* =========================================================
+   SPLIT PDF
+========================================================= */
+
+$("splitBtn").addEventListener("click",async()=>{
+
+    const file =
+        $("splitFile").files[0];
+
+    const page =
+        Number($("splitPage").value);
+
+    const btn =
+        $("splitBtn");
+
+    if(!file){
+
+        status(
+            "splitStatus",
+            "Please select a PDF.",
+            "error"
+        );
+
+        return;
+    }
+
+    if(!page || page < 1){
+
+        status(
+            "splitStatus",
+            "Enter a valid page number.",
+            "error"
+        );
+
+        return;
+    }
+
+    if(!window.PDFLib){
+
+        status(
+            "splitStatus",
+            "PDF engine is still loading. Please wait and try again.",
+            "error"
+        );
+
+        return;
+    }
+
+    btn.disabled = true;
+
+    try{
+
+        const bytes =
+            await file.arrayBuffer();
+
+        const src =
+            await PDFLib.PDFDocument.load(bytes);
+
+        const total =
+            src.getPageCount();
+
+        if(page > total){
+
+            status(
+                "splitStatus",
+                "This PDF has only " +
+                total +
+                " pages.",
+                "error"
+            );
+
+            return;
+        }
+
+        const out =
+            await PDFLib.PDFDocument.create();
+
+        const copied =
+            await out.copyPages(
+                src,
+                [page - 1]
+            );
+
+        out.addPage(copied[0]);
+
+        const result =
+            await out.save();
+
+        download(
+            new Blob(
+                [result],
+                {type:"application/pdf"}
+            ),
+            "page-" + page + ".pdf"
+        );
+
+        status(
+            "splitStatus",
+            "Page " +
+            page +
+            " extracted successfully.",
+            "success"
+        );
+
+    }catch(error){
+
+        console.error(error);
+
+        status(
+            "splitStatus",
+            "Split failed. The PDF may be encrypted or invalid.",
+            "error"
+        );
+
+    }finally{
+
+        btn.disabled = false;
+    }
+});
+
+
+/* =========================================================
+   PDF TO IMAGE
+========================================================= */
+
+$("pdfImageBtn").addEventListener("click",async()=>{
+
+    const file =
+        $("pdfImageFile").files[0];
+
+    const btn =
+        $("pdfImageBtn");
+
+    if(!file){
+
+        status(
+            "pdfImageStatus",
+            "Please select a PDF.",
+            "error"
+        );
+
+        return;
+    }
+
+    if(!window.pdfjsLib){
+
+        status(
+            "pdfImageStatus",
+            "PDF image engine is still loading. Please wait and try again.",
+            "error"
+        );
+
+        return;
+    }
+
+    btn.disabled = true;
+
+    try{
+
+        status(
+            "pdfImageStatus",
+            "Rendering first PDF page..."
+        );
+
+        const data =
+            await file.arrayBuffer();
+
+        const pdf =
+            await pdfjsLib.getDocument({
+                data:new Uint8Array(data)
+            }).promise;
+
+        const page =
+            await pdf.getPage(1);
+
+        const viewport =
+            page.getViewport({
+                scale:2
+            });
+
+        const canvas =
+            document.createElement("canvas");
+
+        canvas.width =
+            Math.ceil(viewport.width);
+
+        canvas.height =
+            Math.ceil(viewport.height);
+
+        const ctx =
+            canvas.getContext("2d");
+
+        await page.render({
+            canvasContext:ctx,
+            viewport:viewport
+        }).promise;
+
+        canvas.toBlob(blob=>{
+
+            if(!blob){
+
+                status(
+                    "pdfImageStatus",
+                    "PNG creation failed.",
+                    "error"
+                );
+
+                btn.disabled = false;
+                return;
+            }
+
+            download(
+                blob,
+                "pdf-page-1.png"
+            );
+
+            status(
+                "pdfImageStatus",
+                "PNG created successfully.",
+                "success"
+            );
+
+            btn.disabled = false;
+
+        },"image/png");
+
+    }catch(error){
+
+        console.error(error);
+
+        status(
+            "pdfImageStatus",
+            "PDF to image failed: " +
+            error.message,
+            "error"
+        );
+
+        btn.disabled = false;
+    }
 });
 
 
@@ -622,62 +1361,91 @@ document.getElementById("createPdfBtn").addEventListener("click",async function(
    COMPRESS IMAGE
 ========================================================= */
 
-document.getElementById("compressBtn").addEventListener("click",async function(){
+$("quality").addEventListener("input",()=>{
 
-  var btn=this;
-  var input=document.getElementById("compressFile");
-  var result=document.getElementById("compressResult");
+    $("qualityValue").textContent =
+        $("quality").value + "%";
+});
 
-  if(!input.files.length){
-    setStatus("compressStatus","Please select an image.");
-    return;
-  }
 
-  btn.disabled=true;
-  result.style.display="none";
-  setStatus("compressStatus","Compressing...");
+$("compressBtn").addEventListener("click",async()=>{
 
-  try{
+    const file =
+        $("compressFile").files[0];
 
-    var file=input.files[0];
-    var img=await loadImage(file);
+    const btn =
+        $("compressBtn");
 
-    var canvas=document.createElement("canvas");
+    if(!file){
 
-    canvas.width=img.width;
-    canvas.height=img.height;
+        status(
+            "compressStatus",
+            "Please select an image.",
+            "error"
+        );
 
-    var ctx=canvas.getContext("2d");
+        return;
+    }
 
-    ctx.drawImage(img,0,0);
+    btn.disabled = true;
 
-    var q=parseInt(document.getElementById("quality").value,10)/100;
+    try{
 
-    var blob=await canvasToBlob(canvas,"image/jpeg",q);
+        const img =
+            await imageLoad(file);
 
-    var url=URL.createObjectURL(blob);
+        const canvas =
+            imageCanvas(img,2400);
 
-    var link=document.getElementById("compressDownload");
+        const quality =
+            Number(
+                $("quality").value
+            ) / 100;
 
-    link.href=url;
-    link.download="compressed-"+file.name.replace(/\.[^.]+$/,"")+".jpg";
+        canvas.toBlob(blob=>{
 
-    document.getElementById("compressInfo").textContent=
-      "Original: "+formatBytes(file.size)+
-      " → Compressed: "+formatBytes(blob.size);
+            if(!blob){
 
-    result.style.display="block";
+                status(
+                    "compressStatus",
+                    "Compression failed.",
+                    "error"
+                );
 
-    setStatus("compressStatus","Compression completed.");
+                btn.disabled = false;
+                return;
+            }
 
-  }catch(error){
+            download(
+                blob,
+                "compressed-image.jpg"
+            );
 
-    console.error(error);
-    setStatus("compressStatus","Error: "+error.message);
+            status(
+                "compressStatus",
+                "Done: " +
+                Math.round(file.size/1024) +
+                " KB → " +
+                Math.round(blob.size/1024) +
+                " KB.",
+                "success"
+            );
 
-  }finally{
-    btn.disabled=false;
-  }
+            btn.disabled = false;
+
+        },"image/jpeg",quality);
+
+    }catch(error){
+
+        status(
+            "compressStatus",
+            "Compression failed: " +
+            error.message,
+            "error"
+        );
+
+        btn.disabled = false;
+    }
 });
 
 
@@ -685,82 +1453,144 @@ document.getElementById("compressBtn").addEventListener("click",async function()
    RESIZE IMAGE
 ========================================================= */
 
-document.getElementById("resizeBtn").addEventListener("click",async function(){
+$("resizeBtn").addEventListener("click",async()=>{
 
-  var btn=this;
-  var input=document.getElementById("resizeFile");
-  var result=document.getElementById("resizeResult");
+    const file =
+        $("resizeFile").files[0];
 
-  if(!input.files.length){
-    setStatus("resizeStatus","Please select an image.");
-    return;
-  }
+    const width =
+        Number(
+            $("resizeWidth").value
+        );
 
-  var width=parseInt(document.getElementById("resizeWidth").value,10);
-  var height=parseInt(document.getElementById("resizeHeight").value,10);
+    const format =
+        $("resizeFormat").value;
 
-  if(!width || width<1){
-    setStatus("resizeStatus","Enter a valid width.");
-    return;
-  }
+    const btn =
+        $("resizeBtn");
 
-  if(!height || height<1){
-    setStatus("resizeStatus","Enter a valid height.");
-    return;
-  }
+    if(!file){
 
-  btn.disabled=true;
-  result.style.display="none";
-  setStatus("resizeStatus","Resizing...");
+        status(
+            "resizeStatus",
+            "Please select an image.",
+            "error"
+        );
 
-  try{
-
-    var file=input.files[0];
-    var img=await loadImage(file);
-
-    if(document.getElementById("keepRatio").checked){
-
-      height=Math.round(width*(img.height/img.width));
-
-      document.getElementById("resizeHeight").value=height;
+        return;
     }
 
-    var canvas=document.createElement("canvas");
+    if(width < 50 || width > 10000){
 
-    canvas.width=width;
-    canvas.height=height;
+        status(
+            "resizeStatus",
+            "Width must be between 50 and 10000 pixels.",
+            "error"
+        );
 
-    var ctx=canvas.getContext("2d");
+        return;
+    }
 
-    ctx.imageSmoothingEnabled=true;
-    ctx.imageSmoothingQuality="high";
+    btn.disabled = true;
 
-    ctx.drawImage(img,0,0,width,height);
+    try{
 
-    var blob=await canvasToBlob(canvas,"image/jpeg",0.92);
+        const img =
+            await imageLoad(file);
 
-    var url=URL.createObjectURL(blob);
+        const height =
+            Math.max(
+                1,
+                Math.round(
+                    img.naturalHeight *
+                    width /
+                    img.naturalWidth
+                )
+            );
 
-    var link=document.getElementById("resizeDownload");
+        const canvas =
+            document.createElement("canvas");
 
-    link.href=url;
-    link.download="resized-"+file.name.replace(/\.[^.]+$/,"")+".jpg";
+        canvas.width = width;
+        canvas.height = height;
 
-    result.style.display="block";
+        const ctx =
+            canvas.getContext(
+                "2d",
+                {alpha:format !== "image/jpeg"}
+            );
 
-    setStatus(
-      "resizeStatus",
-      "Done — "+width+" × "+height+" px"
-    );
+        if(format === "image/jpeg"){
 
-  }catch(error){
+            ctx.fillStyle = "#fff";
 
-    console.error(error);
-    setStatus("resizeStatus","Error: "+error.message);
+            ctx.fillRect(
+                0,
+                0,
+                width,
+                height
+            );
+        }
 
-  }finally{
-    btn.disabled=false;
-  }
+        ctx.drawImage(
+            img,
+            0,
+            0,
+            width,
+            height
+        );
+
+        canvas.toBlob(blob=>{
+
+            if(!blob){
+
+                status(
+                    "resizeStatus",
+                    "Resize failed.",
+                    "error"
+                );
+
+                btn.disabled = false;
+                return;
+            }
+
+            const ext =
+                format === "image/png"
+                ? "png"
+                : format === "image/webp"
+                ? "webp"
+                : "jpg";
+
+            download(
+                blob,
+                "resized-image." + ext
+            );
+
+            status(
+                "resizeStatus",
+                "Done: " +
+                width +
+                " × " +
+                height +
+                " px.",
+                "success"
+            );
+
+            btn.disabled = false;
+
+        },format,.9);
+
+    }catch(error){
+
+        status(
+            "resizeStatus",
+            "Resize failed: " +
+            error.message,
+            "error"
+        );
+
+        btn.disabled = false;
+    }
 });
 
 
@@ -768,97 +1598,265 @@ document.getElementById("resizeBtn").addEventListener("click",async function(){
    IMAGE CONVERTER
 ========================================================= */
 
-document.getElementById("convertBtn").addEventListener("click",async function(){
+$("convertBtn").addEventListener("click",async()=>{
 
-  var btn=this;
-  var input=document.getElementById("convertFile");
-  var result=document.getElementById("convertResult");
+    const file =
+        $("convertFile").files[0];
 
-  if(!input.files.length){
-    setStatus("convertStatus","Please select an image.");
-    return;
-  }
+    const format =
+        $("convertFormat").value;
 
-  btn.disabled=true;
-  result.style.display="none";
-  setStatus("convertStatus","Converting...");
+    const btn =
+        $("convertBtn");
 
-  try{
+    if(!file){
 
-    var file=input.files[0];
-    var img=await loadImage(file);
+        status(
+            "convertStatus",
+            "Please select an image.",
+            "error"
+        );
 
-    var canvas=document.createElement("canvas");
+        return;
+    }
 
-    canvas.width=img.width;
-    canvas.height=img.height;
+    btn.disabled = true;
 
-    var ctx=canvas.getContext("2d");
+    try{
 
-    ctx.fillStyle="#ffffff";
-    ctx.fillRect(0,0,canvas.width,canvas.height);
+        const img =
+            await imageLoad(file);
 
-    ctx.drawImage(img,0,0);
+        const canvas =
+            document.createElement("canvas");
 
-    var format=document.getElementById("convertFormat").value;
+        canvas.width =
+            img.naturalWidth;
 
-    var blob=await canvasToBlob(
-      canvas,
-      format,
-      format==="image/png" ? undefined : 0.92
-    );
+        canvas.height =
+            img.naturalHeight;
 
-    var extension="jpg";
+        const ctx =
+            canvas.getContext(
+                "2d",
+                {alpha:format !== "image/jpeg"}
+            );
 
-    if(format==="image/png") extension="png";
-    if(format==="image/webp") extension="webp";
+        if(format === "image/jpeg"){
 
-    var url=URL.createObjectURL(blob);
+            ctx.fillStyle = "#fff";
 
-    var link=document.getElementById("convertDownload");
+            ctx.fillRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+        }
 
-    link.href=url;
-    link.download=
-      "converted-"+file.name.replace(/\.[^.]+$/,"")+"."+extension;
+        ctx.drawImage(img,0,0);
 
-    result.style.display="block";
+        canvas.toBlob(blob=>{
 
-    setStatus("convertStatus","Conversion completed successfully.");
+            if(!blob){
 
-  }catch(error){
+                status(
+                    "convertStatus",
+                    "Conversion failed.",
+                    "error"
+                );
 
-    console.error(error);
-    setStatus("convertStatus","Error: "+error.message);
+                btn.disabled = false;
+                return;
+            }
 
-  }finally{
-    btn.disabled=false;
-  }
+            const ext =
+                format === "image/png"
+                ? "png"
+                : format === "image/webp"
+                ? "webp"
+                : "jpg";
+
+            download(
+                blob,
+                cleanName(
+                    file.name,
+                    "converted"
+                ) + "." + ext
+            );
+
+            status(
+                "convertStatus",
+                "Image converted successfully.",
+                "success"
+            );
+
+            btn.disabled = false;
+
+        },format,.92);
+
+    }catch(error){
+
+        status(
+            "convertStatus",
+            "Conversion failed: " +
+            error.message,
+            "error"
+        );
+
+        btn.disabled = false;
+    }
 });
 
 
 /* =========================================================
-   FILE SIZE
+   WATERMARK
 ========================================================= */
 
-function formatBytes(bytes){
+$("watermarkBtn").addEventListener("click",async()=>{
 
-  if(bytes===0) return "0 Bytes";
+    const file =
+        $("watermarkFile").files[0];
 
-  var units=[
-    "Bytes",
-    "KB",
-    "MB",
-    "GB"
-  ];
+    const text =
+        $("watermarkText").value.trim();
 
-  var i=Math.floor(Math.log(bytes)/Math.log(1024));
+    const btn =
+        $("watermarkBtn");
 
-  return (
-    (bytes/Math.pow(1024,i)).toFixed(i===0?0:2)
-    +" "+
-    units[i]
-  );
-}
+    if(!file){
+
+        status(
+            "watermarkStatus",
+            "Please select an image.",
+            "error"
+        );
+
+        return;
+    }
+
+    if(!text){
+
+        status(
+            "watermarkStatus",
+            "Please enter watermark text.",
+            "error"
+        );
+
+        return;
+    }
+
+    btn.disabled = true;
+
+    try{
+
+        const img =
+            await imageLoad(file);
+
+        const canvas =
+            document.createElement("canvas");
+
+        canvas.width =
+            img.naturalWidth;
+
+        canvas.height =
+            img.naturalHeight;
+
+        const ctx =
+            canvas.getContext("2d");
+
+        ctx.drawImage(
+            img,
+            0,
+            0
+        );
+
+        const size =
+            Math.max(
+                24,
+                Math.round(
+                    canvas.width / 25
+                )
+            );
+
+        ctx.font =
+            "bold " +
+            size +
+            "px Arial";
+
+        ctx.textAlign =
+            "center";
+
+        ctx.textBaseline =
+            "middle";
+
+        ctx.lineWidth = 3;
+
+        ctx.strokeStyle =
+            "rgba(0,0,0,.65)";
+
+        ctx.fillStyle =
+            "rgba(255,255,255,.9)";
+
+        const x =
+            canvas.width / 2;
+
+        const y =
+            canvas.height / 2;
+
+        ctx.strokeText(
+            text,
+            x,
+            y
+        );
+
+        ctx.fillText(
+            text,
+            x,
+            y
+        );
+
+        canvas.toBlob(blob=>{
+
+            if(!blob){
+
+                status(
+                    "watermarkStatus",
+                    "Watermark failed.",
+                    "error"
+                );
+
+                btn.disabled = false;
+                return;
+            }
+
+            download(
+                blob,
+                "watermarked-image.jpg"
+            );
+
+            status(
+                "watermarkStatus",
+                "Watermarked image downloaded.",
+                "success"
+            );
+
+            btn.disabled = false;
+
+        },"image/jpeg",.92);
+
+    }catch(error){
+
+        status(
+            "watermarkStatus",
+            "Watermark failed: " +
+            error.message,
+            "error"
+        );
+
+        btn.disabled = false;
+    }
+});
 
 </script>
 
