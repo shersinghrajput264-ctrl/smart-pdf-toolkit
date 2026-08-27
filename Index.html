@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart PDF Toolkit - Free PDF & Image Tools</title>
+<meta name="description" content="Free online PDF and image tools. Convert images to PDF, compress, resize and convert images.">
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#151923}
+header{background:white;padding:18px 6%;display:flex;justify-content:space-between;border-bottom:1px solid #ddd}
+.logo{font-size:20px;font-weight:bold}
+.hero{text-align:center;background:white;padding:55px 20px}
+.hero h1{font-size:42px;margin:10px}
+.hero p{color:#666;font-size:18px}
+.container{max-width:1000px;margin:25px auto;padding:15px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{background:white;padding:25px;border-radius:15px;box-shadow:0 5px 20px #ddd}
+.card h2{margin-top:0}
+input,button{width:100%;margin:10px 0;padding:12px;border-radius:9px}
+input{border:1px solid #ccc}
+button{border:0;background:#3157d5;color:white;font-weight:bold}
+.ad{text-align:center;background:white;border:1px dashed #bbb;padding:30px;margin:25px 0;color:#888}
+footer{text-align:center;background:white;padding:25px;margin-top:40px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.hero h1{font-size:32px}}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">📄 Smart PDF Toolkit</div>
+<div>Free Tools</div>
+</header>
+
+<section class="hero">
+<h1>PDF & Image Tools</h1>
+<p>Convert, compress and resize your images easily.</p>
+</section>
+
+<div class="container">
+
+<div class="ad">
+Advertisement
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h2>🖼️ Image → PDF</h2>
+<input id="pdfFiles" type="file" accept="image/*" multiple>
+<button onclick="makePDF()">Create PDF</button>
+<p id="pdfMsg"></p>
+</div>
+
+<div class="card">
+<h2>📉 Compress Image</h2>
+<input id="compressFile" type="file" accept="image/*">
+<button onclick="compressImage()">Compress Image</button>
+<p id="compressMsg"></p>
+</div>
+
+<div class="card">
+<h2>📐 Resize Image</h2>
+<input id="resizeFile" type="file" accept="image/*">
+<input id="resizeWidth" type="number" value="1200" placeholder="Width in pixels">
+<button onclick="resizeImage()">Resize & Download</button>
+<p id="resizeMsg"></p>
+</div>
+
+<div class="card">
+<h2>🔄 Image Converter</h2>
+<input id="convertFile" type="file" accept="image/*">
+<button onclick="convertImage()">Convert to JPG</button>
+<p id="convertMsg"></p>
+</div>
+
+</div>
+
+<div class="ad">
+Advertisement
+</div>
+
+<div class="card">
+<h2>📱 Smart PDF Toolkit Android App</h2>
+<p>More PDF and image tools will be available in our Android app.</p>
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 Smart PDF Toolkit</p>
+<p>
+<a href="privacy.html">Privacy Policy</a> |
+<a href="terms.html">Terms</a>
+</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+
+<script>
+
+function readFile(file){
+return new Promise((resolve,reject)=>{
+let r=new FileReader();
+r.onload=()=>resolve(r.result);
+r.onerror=reject;
+r.readAsDataURL(file);
+});
+}
+
+function loadImage(src){
+return new Promise((resolve,reject)=>{
+let img=new Image();
+img.onload=()=>resolve(img);
+img.onerror=reject;
+img.src=src;
+});
+}
+
+function download(blob,name){
+let url=URL.createObjectURL(blob);
+let a=document.createElement("a");
+a.href=url;
+a.download=name;
+a.click();
+setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+async function makePDF(){
+
+let files=[...document.getElementById("pdfFiles").files];
+
+if(!files.length){
+document.getElementById("pdfMsg").innerText="Please select images.";
+return;
+}
+
+let {jsPDF}=window.jspdf;
+let pdf=new jsPDF({unit:"mm",format:"a4"});
+
+for(let i=0;i<files.length;i++){
+
+let src=await readFile(files[i]);
+let image=await loadImage(src);
+
+let maxW=190;
+let maxH=277;
+
+let scale=Math.min(maxW/image.width,maxH/image.height);
+
+let w=image.width*scale;
+let h=image.height*scale;
+
+if(i>0) pdf.addPage();
+
+pdf.addImage(
+src,
+"JPEG",
+(210-w)/2,
+(297-h)/2,
+w,
+h
+);
+}
+
+pdf.save("smart-pdf.pdf");
+
+document.getElementById("pdfMsg").innerText="PDF created successfully!";
+}
+
+async function compressImage(){
+
+let file=document.getElementById("compressFile").files[0];
