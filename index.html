@@ -2,310 +2,865 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-<meta name="description"
-content="Smart PDF Toolkit - Free online PDF and image tools. Merge, split, convert, compress, resize and watermark files.">
-
-<meta name="robots" content="index,follow">
-
-<title>Smart PDF Toolkit - Free PDF & Image Tools</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Smart PDF Toolkit - Free online PDF and image tools">
+<title>Smart PDF Toolkit</title>
 
 <style>
 *{box-sizing:border-box}
-
 html{scroll-behavior:smooth}
-
 body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#f5f7fb;
-color:#151a26;
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f6fa;
+  color:#151923;
 }
-
 header{
-position:sticky;
-top:0;
-z-index:20;
-background:#fff;
-border-bottom:1px solid #e5e7eb;
+  background:#fff;
+  border-bottom:1px solid #ddd;
+  padding:18px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:20;
 }
-
-.nav{
-max-width:1150px;
-margin:auto;
-padding:15px 20px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
-
 .logo{
-font-size:21px;
-font-weight:800;
+  font-size:22px;
+  font-weight:700;
 }
-
-.navlinks{
-display:flex;
-gap:18px;
-}
-
-.navlinks a{
-text-decoration:none;
-color:#252b35;
-font-weight:600;
-}
-
+.logo span{margin-right:8px}
+.nav{font-size:17px;color:#333}
 .hero{
-text-align:center;
-background:#fff;
-padding:65px 20px 70px;
+  background:#fff;
+  text-align:center;
+  padding:75px 20px 65px;
 }
-
 .hero h1{
-font-size:46px;
-margin:0 0 15px;
+  font-size:48px;
+  margin:0 0 22px;
 }
-
 .hero p{
-max-width:720px;
-margin:auto;
-color:#626a76;
-font-size:19px;
-line-height:1.5;
+  color:#666;
+  font-size:21px;
+  max-width:700px;
+  margin:auto;
+  line-height:1.5;
 }
-
 .ad{
-max-width:900px;
-min-height:110px;
-margin:25px auto;
-padding:15px 20px;
-border:1px dashed #c7ccd5;
-background:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#888;
+  max-width:640px;
+  height:140px;
+  margin:35px auto;
+  background:#fff;
+  border:1px dashed #bbb;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#888;
+  font-size:18px;
 }
-
 .container{
-max-width:1150px;
-margin:auto;
-padding:15px 20px 60px;
+  max-width:1050px;
+  margin:auto;
+  padding:10px 20px 60px;
 }
-
-.section-title{
-text-align:center;
-margin:40px 0 25px;
-}
-
-.section-title h2{
-font-size:32px;
-margin:0 0 8px;
-}
-
-.section-title p{
-color:#69717c;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:22px;
-}
-
 .card{
-background:#fff;
-border:1px solid #edf0f5;
-border-radius:18px;
-padding:24px;
-box-shadow:0 7px 25px rgba(0,0,0,.06);
+  background:#fff;
+  border-radius:24px;
+  padding:30px;
+  margin:25px 0;
+  box-shadow:0 8px 30px rgba(0,0,0,.07);
 }
-
-.card h3{
-font-size:24px;
-margin:0 0 8px;
+.card h2{
+  margin-top:0;
+  font-size:30px;
 }
-
-.card p{
-color:#68717d;
-line-height:1.45;
-}
-
-.icon{
-font-size:30px;
-margin-bottom:8px;
-}
-
-.filebox{
-border:2px dashed #ccd3df;
-background:#fafbfe;
-border-radius:12px;
-padding:18px;
-margin:15px 0;
-}
-
+.card p{color:#666}
 input[type=file]{
-width:100%;
-font-size:15px;
+  width:100%;
+  padding:18px;
+  border:1px solid #ccc;
+  border-radius:12px;
+  background:#fafafa;
+  font-size:16px;
 }
-
-input[type=number],
-input[type=text],
-select{
-width:100%;
-padding:11px;
-border:1px solid #ccd2dc;
-border-radius:10px;
-background:#fff;
-}
-
-input[type=range]{
-width:100%;
-}
-
-label{
-display:block;
-font-weight:700;
-margin:10px 0 6px;
-}
-
-.row{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-}
-
 button{
-width:100%;
-padding:14px;
-border:0;
-border-radius:11px;
-background:#3157d5;
-color:#fff;
-font-weight:700;
-cursor:pointer;
-margin-top:12px;
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:16px;
+  margin-top:16px;
+  background:#315bd6;
+  color:#fff;
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
 }
-
-button:hover{
-filter:brightness(.94);
-}
-
+button:hover{background:#2449b8}
 button:disabled{
-opacity:.55;
-cursor:not-allowed;
+  opacity:.55;
+  cursor:not-allowed;
 }
-
-.preview{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(110px,1fr));
-gap:10px;
-margin-top:12px;
-}
-
-.preview img{
-width:100%;
-height:110px;
-object-fit:cover;
-border-radius:9px;
-border:1px solid #ddd;
-}
-
-.file-list{
-font-size:14px;
-color:#555;
-margin-top:10px;
-}
-
-.file-list div{
-padding:5px 0;
-border-bottom:1px solid #eee;
-}
-
-.status{
-display:none;
-margin-top:12px;
-padding:12px;
-border-radius:9px;
-line-height:1.4;
-}
-
-.status.show{
-display:block;
-}
-
-.status.info{
-background:#eef3ff;
-color:#2446b8;
-}
-
-.status.success{
-background:#effbf2;
-color:#176b2b;
-}
-
-.status.error{
-background:#fff0f0;
-color:#a21d1d;
-}
-
-.info{
-background:#fff;
-border-radius:18px;
-padding:25px;
-line-height:1.7;
-box-shadow:0 5px 20px rgba(0,0,0,.05);
-}
-
-.info a{
-color:#3157d5;
-font-weight:700;
-}
-
-footer{
-background:#111827;
-color:#fff;
-padding:40px 20px;
-}
-
-.footer{
-max-width:1150px;
-margin:auto;
-display:grid;
-grid-template-columns:2fr 1fr 1fr;
-gap:30px;
-}
-
-.footer a{
-color:#d8dce5;
-text-decoration:none;
-display:block;
-margin:8px 0;
-}
-
-.copy{
-text-align:center;
-border-top:1px solid #343b48;
-margin-top:30px;
-padding-top:20px;
-color:#aeb5c1;
-}
-
-@media(max-width:760px){
-
-.hero h1{
-font-size:36px;
-}
-
-.grid{
-grid-template-columns:1fr;
-}
-
 .row{
-grid-template-columns:1fr;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
 }
+label{
+  display:block;
+  font-weight:700;
+  margin:15px 0 8px;
+}
+input[type=number],select{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:10px;
+  font-size:16px;
+}
+.preview{
+  max-width:100%;
+  max-height:350px;
+  display:block;
+  margin:20px auto;
+  border-radius:10px;
+}
+.result{
+  margin-top:18px;
+  padding:15px;
+  border-radius:12px;
+  background:#eef4ff;
+  display:none;
+}
+.result a{
+  display:inline-block;
+  background:#315bd6;
+  color:white;
+  text-decoration:none;
+  padding:12px 18px;
+  border-radius:9px;
+  margin-top:10px;
+  font-weight:700;
+}
+.status{
+  margin-top:15px;
+  text-align:center;
+  font-weight:600;
+}
+footer{
+  background:#171a22;
+  color:#fff;
+  text-align:center;
+  padding:35px 20px;
+}
+.small{font-size:14px;color:#888}
+@media(max-width:650px){
+  .hero h1{font-size:36px}
+  .hero p{font-size:18px}
+  .card{padding:22px}
+  .row{grid-template-columns:1fr}
+  header{padding:16px 20px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo"><span>📄</span>Smart PDF Toolkit</div>
+  <div class="nav">Free Tools</div>
+</header>
+
+<section class="hero">
+  <h1>PDF & Image Tools</h1>
+  <p>Convert, compress, resize and download your files easily.</p>
+</section>
+
+<div class="ad">Advertisement</div>
+
+<main class="container">
+
+  <!-- IMAGE TO PDF -->
+  <section class="card">
+    <h2>🖼️ Image → PDF</h2>
+    <p>Select one or more JPG, JPEG or PNG images and create a PDF.</p>
+
+    <input id="pdfImages" type="file" accept="image/jpeg,image/png" multiple>
+
+    <button id="createPdfBtn">Create PDF</button>
+
+    <div id="pdfStatus" class="status"></div>
+
+    <div id="pdfResult" class="result">
+      <b>PDF created successfully.</b><br>
+      <a id="pdfDownload" download="smart-pdf.pdf">Download PDF</a>
+    </div>
+  </section>
+
+  <!-- COMPRESS -->
+  <section class="card">
+    <h2>📉 Compress Image</h2>
+    <p>Reduce image size directly in your browser.</p>
+
+    <input id="compressFile" type="file" accept="image/jpeg,image/png">
+
+    <label for="quality">Quality</label>
+    <input id="quality" type="range" min="20" max="95" value="70">
+
+    <div style="text-align:center;margin-top:8px">
+      Quality: <b id="qualityValue">70%</b>
+    </div>
+
+    <button id="compressBtn">Compress Image</button>
+
+    <div id="compressStatus" class="status"></div>
+
+    <div id="compressResult" class="result">
+      <b id="compressInfo"></b><br>
+      <a id="compressDownload">Download Compressed Image</a>
+    </div>
+  </section>
+
+  <!-- RESIZE -->
+  <section class="card">
+    <h2>📐 Resize Image</h2>
+    <p>Resize an image to your required dimensions.</p>
+
+    <input id="resizeFile" type="file" accept="image/jpeg,image/png">
+
+    <div class="row">
+      <div>
+        <label for="resizeWidth">Width (px)</label>
+        <input id="resizeWidth" type="number" placeholder="1200">
+      </div>
+
+      <div>
+        <label for="resizeHeight">Height (px)</label>
+        <input id="resizeHeight" type="number" placeholder="800">
+      </div>
+    </div>
+
+    <label>
+      <input id="keepRatio" type="checkbox" checked>
+      Keep aspect ratio
+    </label>
+
+    <button id="resizeBtn">Resize Image</button>
+
+    <div id="resizeStatus" class="status"></div>
+
+    <div id="resizeResult" class="result">
+      <b>Image resized successfully.</b><br>
+      <a id="resizeDownload">Download Resized Image</a>
+    </div>
+  </section>
+
+  <!-- IMAGE CONVERTER -->
+  <section class="card">
+    <h2>🔄 Image Converter</h2>
+    <p>Convert JPG/PNG images between common formats.</p>
+
+    <input id="convertFile" type="file" accept="image/jpeg,image/png">
+
+    <label for="convertFormat">Output format</label>
+    <select id="convertFormat">
+      <option value="image/jpeg">JPG</option>
+      <option value="image/png">PNG</option>
+      <option value="image/webp">WEBP</option>
+    </select>
+
+    <button id="convertBtn">Convert Image</button>
+
+    <div id="convertStatus" class="status"></div>
+
+    <div id="convertResult" class="result">
+      <b>Conversion completed.</b><br>
+      <a id="convertDownload">Download Converted Image</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div style="font-size:20px;font-weight:bold">📄 Smart PDF Toolkit</div>
+  <p>Simple, fast and browser-based file tools.</p>
+  <div class="small">Your files are processed locally in your browser.</div>
+</footer>
+
+
+<script>
+"use strict";
+
+/* =========================================================
+   COMMON HELPERS
+========================================================= */
+
+function loadImage(file){
+  return new Promise(function(resolve,reject){
+    var img = new Image();
+    var url = URL.createObjectURL(file);
+
+    img.onload = function(){
+      URL.revokeObjectURL(url);
+      resolve(img);
+    };
+
+    img.onerror = function(){
+      URL.revokeObjectURL(url);
+      reject(new Error("Unable to read image."));
+    };
+
+    img.src = url;
+  });
+}
+
+function canvasToBlob(canvas,type,quality){
+  return new Promise(function(resolve,reject){
+    canvas.toBlob(function(blob){
+      if(blob) resolve(blob);
+      else reject(new Error("Could not create image."));
+    },type,quality);
+  });
+}
+
+function downloadBlob(blob,filename,mime){
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement("a");
+
+  a.href = url;
+  a.download = filename;
+
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  setTimeout(function(){
+    URL.revokeObjectURL(url);
+  },1000);
+}
+
+function setStatus(id,text){
+  document.getElementById(id).textContent=text;
+}
+
+/* =========================================================
+   QUALITY SLIDER
+========================================================= */
+
+document.getElementById("quality").addEventListener("input",function(){
+  document.getElementById("qualityValue").textContent=this.value+"%";
+});
+
+
+/* =========================================================
+   IMAGE -> PDF
+   Creates a basic valid PDF without external libraries.
+========================================================= */
+
+function escapePdfText(text){
+  return text
+    .replace(/\\/g,"\\\\")
+    .replace(/\(/g,"\\(")
+    .replace(/\)/g,"\\)");
+}
+
+async function createPdfFromImages(files){
+
+  var pages=[];
+  var objects=[];
+  var xref=[];
+  var chunks=[];
+
+  var pdf="%PDF-1.4\n%\xFF\xFF\xFF\xFF\n";
+
+  function addObject(content){
+    objects.push(content);
+    return objects.length;
+  }
+
+  for(var i=0;i<files.length;i++){
+
+    var img=await loadImage(files[i]);
+
+    var canvas=document.createElement("canvas");
+
+    var max=1600;
+    var scale=Math.min(1,max/Math.max(img.width,img.height));
+
+    canvas.width=Math.max(1,Math.round(img.width*scale));
+    canvas.height=Math.max(1,Math.round(img.height*scale));
+
+    var ctx=canvas.getContext("2d");
+    ctx.drawImage(img,0,0,canvas.width,canvas.height);
+
+    var jpg=await canvasToBlob(canvas,"image/jpeg",0.90);
+    var buffer=await jpg.arrayBuffer();
+
+    var bytes=new Uint8Array(buffer);
+
+    var width=canvas.width;
+    var height=canvas.height;
+
+    pages.push({
+      width:width,
+      height:height,
+      bytes:bytes
+    });
+  }
+
+  var catalogId=addObject("");
+  var pagesId=addObject("");
+
+  var pageIds=[];
+  var imageIds=[];
+  var contentIds=[];
+
+  pages.forEach(function(page){
+
+    var imageId=addObject("");
+    imageIds.push(imageId);
+
+    var contentId=addObject("");
+    contentIds.push(contentId);
+
+    var pageId=addObject("");
+    pageIds.push(pageId);
+  });
+
+  /* Build PDF objects */
+
+  pages.forEach(function(page,index){
+
+    var imageId=imageIds[index];
+    var contentId=contentIds[index];
+    var pageId=pageIds[index];
+
+    objects[imageId-1]=
+      "<< /Type /XObject" +
+      " /Subtype /Image" +
+      " /Width "+page.width +
+      " /Height "+page.height +
+      " /ColorSpace /DeviceRGB" +
+      " /BitsPerComponent 8" +
+      " /Filter /DCTDecode" +
+      " /Length "+page.bytes.length +
+      " >>\nstream\n";
+
+    objects[imageId-1]={
+      header:objects[imageId-1],
+      data:page.bytes
+    };
+
+    var stream=
+      "q\n"+
+      page.width+" 0 0 "+page.height+" 0 0 cm\n"+
+      "/Im0 Do\n"+
+      "Q\n";
+
+    objects[contentId-1]=
+      "<< /Length "+stream.length+" >>\n"+
+      "stream\n"+
+      stream+
+      "endstream";
+
+    objects[pageId-1]=
+      "<< /Type /Page"+
+      " /Parent "+pagesId+" 0 R"+
+      " /MediaBox [0 0 "+page.width+" "+page.height+"]"+
+      " /Resources << /XObject << /Im0 "+imageId+" 0 R >> >>"+
+      " /Contents "+contentId+" 0 R >>";
+  });
+
+  objects[pagesId-1]=
+    "<< /Type /Pages"+
+    " /Kids ["+
+    pageIds.map(function(id){return id+" 0 R";}).join(" ")+
+    "] /Count "+pageIds.length+" >>";
+
+  objects[catalogId-1]=
+    "<< /Type /Catalog /Pages "+pagesId+" 0 R >>";
+
+  /* Convert strings + binary image data into bytes */
+
+  function strBytes(str){
+    var arr=new Uint8Array(str.length);
+    for(var i=0;i<str.length;i++){
+      arr[i]=str.charCodeAt(i)&255;
+    }
+    return arr;
+  }
+
+  var output=[];
+  var offset=pdf.length;
+
+  output.push(strBytes(pdf));
+
+  for(var n=0;n<objects.length;n++){
+
+    xref[n+1]=offset;
+
+    var obj=objects[n];
+
+    if(typeof obj==="string"){
+
+      var data=
+        (n+1)+" 0 obj\n"+
+        obj+
+        "\nendobj\n";
+
+      var b=strBytes(data);
+      output.push(b);
+      offset+=b.length;
+
+    }else{
+
+      var head=
+        (n+1)+" 0 obj\n"+
+        obj.header;
+
+      var hb=strBytes(head);
+
+      output.push(hb);
+      offset+=hb.length;
+
+      output.push(obj.data);
+      offset+=obj.data.length;
+
+      var tail=strBytes("\nendstream\nendobj\n");
+      output.push(tail);
+      offset+=tail.length;
+    }
+  }
+
+  var startxref=offset;
+
+  var xrefText=
+    "xref\n"+
+    "0 "+(objects.length+1)+"\n"+
+    "0000000000 65535 f \n";
+
+  for(var x=1;x<=objects.length;x++){
+    xrefText+=String(xref[x]).padStart(10,"0")+" 00000 n \n";
+  }
+
+  xrefText+=
+    "trailer\n"+
+    "<< /Size "+(objects.length+1)+" /Root "+catalogId+" 0 R >>\n"+
+    "startxref\n"+
+    startxref+
+    "\n%%EOF";
+
+  output.push(strBytes(xrefText));
+
+  var total=0;
+
+  output.forEach(function(b){
+    total+=b.length;
+  });
+
+  var finalBytes=new Uint8Array(total);
+  var position=0;
+
+  output.forEach(function(b){
+    finalBytes.set(b,position);
+    position+=b.length;
+  });
+
+  return new Blob([finalBytes],{type:"application/pdf"});
+}
+
+
+/* =========================================================
+   CREATE PDF BUTTON
+========================================================= */
+
+document.getElementById("createPdfBtn").addEventListener("click",async function(){
+
+  var btn=this;
+  var input=document.getElementById("pdfImages");
+  var result=document.getElementById("pdfResult");
+  var link=document.getElementById("pdfDownload");
+
+  if(!input.files.length){
+    setStatus("pdfStatus","Please select at least one image.");
+    return;
+  }
+
+  btn.disabled=true;
+  result.style.display="none";
+  setStatus("pdfStatus","Creating PDF...");
+
+  try{
+
+    var pdf=await createPdfFromImages(Array.from(input.files));
+
+    var url=URL.createObjectURL(pdf);
+
+    link.href=url;
+    link.download="smart-pdf.pdf";
+
+    result.style.display="block";
+
+    setStatus(
+      "pdfStatus",
+      "PDF ready — "+input.files.length+" image(s) added."
+    );
+
+  }catch(error){
+
+    console.error(error);
+    setStatus("pdfStatus","Error: "+error.message);
+
+  }finally{
+    btn.disabled=false;
+  }
+});
+
+
+/* =========================================================
+   COMPRESS IMAGE
+========================================================= */
+
+document.getElementById("compressBtn").addEventListener("click",async function(){
+
+  var btn=this;
+  var input=document.getElementById("compressFile");
+  var result=document.getElementById("compressResult");
+
+  if(!input.files.length){
+    setStatus("compressStatus","Please select an image.");
+    return;
+  }
+
+  btn.disabled=true;
+  result.style.display="none";
+  setStatus("compressStatus","Compressing...");
+
+  try{
+
+    var file=input.files[0];
+    var img=await loadImage(file);
+
+    var canvas=document.createElement("canvas");
+
+    canvas.width=img.width;
+    canvas.height=img.height;
+
+    var ctx=canvas.getContext("2d");
+
+    ctx.drawImage(img,0,0);
+
+    var q=parseInt(document.getElementById("quality").value,10)/100;
+
+    var blob=await canvasToBlob(canvas,"image/jpeg",q);
+
+    var url=URL.createObjectURL(blob);
+
+    var link=document.getElementById("compressDownload");
+
+    link.href=url;
+    link.download="compressed-"+file.name.replace(/\.[^.]+$/,"")+".jpg";
+
+    document.getElementById("compressInfo").textContent=
+      "Original: "+formatBytes(file.size)+
+      " → Compressed: "+formatBytes(blob.size);
+
+    result.style.display="block";
+
+    setStatus("compressStatus","Compression completed.");
+
+  }catch(error){
+
+    console.error(error);
+    setStatus("compressStatus","Error: "+error.message);
+
+  }finally{
+    btn.disabled=false;
+  }
+});
+
+
+/* =========================================================
+   RESIZE IMAGE
+========================================================= */
+
+document.getElementById("resizeBtn").addEventListener("click",async function(){
+
+  var btn=this;
+  var input=document.getElementById("resizeFile");
+  var result=document.getElementById("resizeResult");
+
+  if(!input.files.length){
+    setStatus("resizeStatus","Please select an image.");
+    return;
+  }
+
+  var width=parseInt(document.getElementById("resizeWidth").value,10);
+  var height=parseInt(document.getElementById("resizeHeight").value,10);
+
+  if(!width || width<1){
+    setStatus("resizeStatus","Enter a valid width.");
+    return;
+  }
+
+  if(!height || height<1){
+    setStatus("resizeStatus","Enter a valid height.");
+    return;
+  }
+
+  btn.disabled=true;
+  result.style.display="none";
+  setStatus("resizeStatus","Resizing...");
+
+  try{
+
+    var file=input.files[0];
+    var img=await loadImage(file);
+
+    if(document.getElementById("keepRatio").checked){
+
+      height=Math.round(width*(img.height/img.width));
+
+      document.getElementById("resizeHeight").value=height;
+    }
+
+    var canvas=document.createElement("canvas");
+
+    canvas.width=width;
+    canvas.height=height;
+
+    var ctx=canvas.getContext("2d");
+
+    ctx.imageSmoothingEnabled=true;
+    ctx.imageSmoothingQuality="high";
+
+    ctx.drawImage(img,0,0,width,height);
+
+    var blob=await canvasToBlob(canvas,"image/jpeg",0.92);
+
+    var url=URL.createObjectURL(blob);
+
+    var link=document.getElementById("resizeDownload");
+
+    link.href=url;
+    link.download="resized-"+file.name.replace(/\.[^.]+$/,"")+".jpg";
+
+    result.style.display="block";
+
+    setStatus(
+      "resizeStatus",
+      "Done — "+width+" × "+height+" px"
+    );
+
+  }catch(error){
+
+    console.error(error);
+    setStatus("resizeStatus","Error: "+error.message);
+
+  }finally{
+    btn.disabled=false;
+  }
+});
+
+
+/* =========================================================
+   IMAGE CONVERTER
+========================================================= */
+
+document.getElementById("convertBtn").addEventListener("click",async function(){
+
+  var btn=this;
+  var input=document.getElementById("convertFile");
+  var result=document.getElementById("convertResult");
+
+  if(!input.files.length){
+    setStatus("convertStatus","Please select an image.");
+    return;
+  }
+
+  btn.disabled=true;
+  result.style.display="none";
+  setStatus("convertStatus","Converting...");
+
+  try{
+
+    var file=input.files[0];
+    var img=await loadImage(file);
+
+    var canvas=document.createElement("canvas");
+
+    canvas.width=img.width;
+    canvas.height=img.height;
+
+    var ctx=canvas.getContext("2d");
+
+    ctx.fillStyle="#ffffff";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx.drawImage(img,0,0);
+
+    var format=document.getElementById("convertFormat").value;
+
+    var blob=await canvasToBlob(
+      canvas,
+      format,
+      format==="image/png" ? undefined : 0.92
+    );
+
+    var extension="jpg";
+
+    if(format==="image/png") extension="png";
+    if(format==="image/webp") extension="webp";
+
+    var url=URL.createObjectURL(blob);
+
+    var link=document.getElementById("convertDownload");
+
+    link.href=url;
+    link.download=
+      "converted-"+file.name.replace(/\.[^.]+$/,"")+"."+extension;
+
+    result.style.display="block";
+
+    setStatus("convertStatus","Conversion completed successfully.");
+
+  }catch(error){
+
+    console.error(error);
+    setStatus("convertStatus","Error: "+error.message);
+
+  }finally{
+    btn.disabled=false;
+  }
+});
+
+
+/* =========================================================
+   FILE SIZE
+========================================================= */
+
+function formatBytes(bytes){
+
+  if(bytes===0) return "0 Bytes";
+
+  var units=[
+    "Bytes",
+    "KB",
+    "MB",
+    "GB"
+  ];
+
+  var i=Math.floor(Math.log(bytes)/Math.log(1024));
+
+  return (
+    (bytes/Math.pow(1024,i)).toFixed(i===0?0:2)
+    +" "+
+    units[i]
+  );
+}
+
+</script>
+
+</body>
+</html>
