@@ -2,1283 +2,290 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Smart PDF Toolkit - Free PDF & Image Tools</title>
+<title>Smart PDF Toolkit</title>
 
-<meta name="description"
-content="Free online PDF and image tools. Convert images to PDF, merge PDF files, split PDF pages, compress images and convert JPG PNG WebP files.">
-
-<meta name="keywords"
-content="PDF tools, image to PDF, merge PDF, split PDF, compress image, JPG PNG converter">
-
-<meta name="robots" content="index,follow">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
 *{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
+    box-sizing:border-box;
 }
 
 body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f6fb;
-  color:#171b2d;
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f7fb;
+    color:#151a26;
 }
 
 header{
-  background:#ffffff;
-  border-bottom:1px solid #e5e7ef;
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-
-.nav{
-  max-width:1100px;
-  margin:auto;
-  padding:15px 18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
+    background:white;
+    border-bottom:1px solid #ddd;
+    padding:18px 6%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:18px;
 }
 
 .logo{
-  font-size:21px;
-  font-weight:800;
-  text-decoration:none;
-  color:#18213d;
-}
-
-.logo span{
-  color:#3457d5;
-}
-
-.navlinks{
-  display:flex;
-  gap:18px;
-  flex-wrap:wrap;
-}
-
-.navlinks a{
-  color:#4b5563;
-  text-decoration:none;
-  font-size:14px;
+    font-weight:bold;
+    font-size:22px;
 }
 
 .hero{
-  max-width:1100px;
-  margin:auto;
-  padding:55px 18px 30px;
-  text-align:center;
-}
-
-.badge{
-  display:inline-block;
-  padding:7px 13px;
-  border-radius:30px;
-  background:#e9edff;
-  color:#3457d5;
-  font-weight:bold;
-  font-size:13px;
+    text-align:center;
+    background:white;
+    padding:65px 20px 80px;
 }
 
 .hero h1{
-  font-size:42px;
-  line-height:1.1;
-  margin:18px 0 12px;
+    font-size:44px;
+    margin:0 0 20px;
 }
 
 .hero p{
-  max-width:700px;
-  margin:auto;
-  color:#667085;
-  font-size:17px;
-  line-height:1.6;
+    color:#666;
+    font-size:19px;
+    line-height:1.5;
 }
 
 .ad{
-  max-width:900px;
-  height:125px;
-  margin:20px auto 30px;
-  border:1px dashed #b7bdca;
-  background:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#9299a8;
-  font-size:14px;
+    height:130px;
+    max-width:640px;
+    margin:35px auto;
+    border:1px dashed #bbb;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#888;
 }
 
 .container{
-  max-width:1100px;
-  margin:auto;
-  padding:0 18px 50px;
-}
-
-.section-title{
-  text-align:center;
-  margin:30px 0 22px;
-}
-
-.section-title h2{
-  margin:0 0 7px;
-  font-size:28px;
-}
-
-.section-title p{
-  margin:0;
-  color:#697386;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:20px;
+    max-width:950px;
+    margin:auto;
+    padding:0 18px 50px;
 }
 
 .card{
-  background:#fff;
-  border-radius:20px;
-  padding:24px;
-  box-shadow:0 8px 28px rgba(20,30,60,.07);
-  border:1px solid #e8eaf1;
+    background:white;
+    padding:28px;
+    border-radius:20px;
+    margin:22px 0;
+    box-shadow:0 7px 25px rgba(0,0,0,.07);
 }
 
-.card h3{
-  margin:0 0 8px;
-  font-size:22px;
+.card h2{
+    font-size:30px;
+    margin-top:0;
 }
 
 .card p{
-  color:#697386;
-  font-size:14px;
-  line-height:1.5;
+    color:#666;
+    line-height:1.5;
 }
 
-.icon{
-  font-size:31px;
-  margin-bottom:8px;
+.filebox{
+    border:2px dashed #ccd3df;
+    padding:20px;
+    border-radius:12px;
+    background:#fafbfe;
+    margin:20px 0;
 }
 
-input[type=file],
-input[type=number],
+input[type="file"]{
+    width:100%;
+    font-size:16px;
+}
+
+input[type="number"],
 select{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border:1px solid #d6d9e2;
-  border-radius:10px;
-  background:#fff;
+    width:100%;
+    padding:12px;
+    font-size:16px;
+    border:1px solid #ccd2dc;
+    border-radius:10px;
+    background:white;
+}
+
+input[type="range"]{
+    width:100%;
+}
+
+label{
+    display:block;
+    margin:8px 0;
+    font-weight:bold;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-top:15px;
 }
 
 button{
-  width:100%;
-  border:0;
-  border-radius:11px;
-  padding:14px 18px;
-  background:#3457d5;
-  color:#fff;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:8px;
+    width:100%;
+    padding:16px;
+    margin-top:18px;
+    border:0;
+    border-radius:11px;
+    background:#3157d5;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 button:hover{
-  opacity:.92;
-}
-
-button.secondary{
-  background:#eef1f8;
-  color:#25304b;
-}
-
-button.danger{
-  background:#d83b52;
+    background:#2446b8;
 }
 
 button:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-}
-
-.status{
-  margin-top:12px;
-  padding:10px;
-  border-radius:9px;
-  background:#f5f7fb;
-  color:#596273;
-  font-size:13px;
-  display:none;
-}
-
-.result{
-  margin-top:12px;
-}
-
-.download{
-  display:block;
-  text-align:center;
-  padding:11px;
-  background:#edf7ef;
-  color:#24733a;
-  border-radius:9px;
-  text-decoration:none;
-  font-weight:bold;
-  margin-top:8px;
+    opacity:.55;
+    cursor:not-allowed;
 }
 
 .preview{
-  width:100%;
-  max-height:300px;
-  object-fit:contain;
-  border-radius:10px;
-  margin-top:10px;
-  display:none;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+    gap:10px;
+    margin-top:15px;
 }
 
-.note{
-  font-size:12px;
-  color:#777f8e;
-  margin-top:8px;
+.preview img{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+    border-radius:9px;
+    border:1px solid #ddd;
 }
 
-.full{
-  grid-column:1/-1;
-}
-
-.info{
-  background:#fff;
-  border-radius:18px;
-  padding:25px;
-  margin-top:25px;
-  border:1px solid #e8eaf1;
-}
-
-.info h2{
-  margin-top:0;
-}
-
-.info p,
-.info li{
-  color:#596273;
-  line-height:1.65;
-}
-
-footer{
-  background:#151a2b;
-  color:#d8ddea;
-  padding:35px 18px;
-}
-
-.footer-inner{
-  max-width:1100px;
-  margin:auto;
-  text-align:center;
-}
-
-.footer-links{
-  margin:15px 0;
-}
-
-.footer-links a{
-  color:#d8ddea;
-  margin:0 8px;
-  text-decoration:none;
-  font-size:14px;
-}
-
-.small{
-  font-size:12px;
-  color:#9da5b8;
-}
-
-@media(max-width:750px){
-  .grid{
-    grid-template-columns:1fr;
-  }
-
-  .full{
-    grid-column:auto;
-  }
-
-  .hero h1{
-    font-size:34px;
-  }
-
-  .navlinks{
+.status{
     display:none;
-  }
+    padding:13px;
+    margin-top:15px;
+    border-radius:9px;
+    line-height:1.4;
+}
 
-  .card{
-    padding:20px;
-  }
+.status.show{
+    display:block;
+}
+
+.status.error{
+    background:#fff0f0;
+    color:#a21d1d;
+}
+
+.status.success{
+    background:#effbf2;
+    color:#176b2b;
+}
+
+.status.info{
+    background:#eef3ff;
+    color:#2446b8;
+}
+
+.footer{
+    text-align:center;
+    color:#777;
+    padding:30px;
+}
+
+@media(max-width:650px){
+
+    .hero{
+        padding:50px 18px 65px;
+    }
+
+    .hero h1{
+        font-size:35px;
+    }
+
+    .hero p{
+        font-size:17px;
+    }
+
+    .row{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:22px;
+    }
+
+    .card h2{
+        font-size:27px;
+    }
+
+    header{
+        padding:16px 20px;
+    }
 }
 </style>
-
-<!-- PDF libraries -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs" type="module"></script>
-
 </head>
 
 <body>
 
 <header>
-  <div class="nav">
-    <a class="logo" href="#">Smart <span>PDF Toolkit</span></a>
-
-    <div class="navlinks">
-      <a href="#tools">Tools</a>
-      <a href="#about">About</a>
-      <a href="#privacy">Privacy</a>
-      <a href="#terms">Terms</a>
-    </div>
-  </div>
+    <div class="logo">📄 Smart PDF Toolkit</div>
+    <div>Free Tools</div>
 </header>
 
 <section class="hero">
-
-  <span class="badge">FREE • FAST • MOBILE FRIENDLY</span>
-
-  <h1>Smart PDF & Image Toolkit</h1>
-
-  <p>
-    Convert, compress, merge and split your PDF and image files
-    directly in your browser.
-  </p>
-
+    <h1>PDF & Image Tools</h1>
+    <p>
+        Convert, compress and resize your images easily.
+    </p>
 </section>
 
 <div class="ad">
-  Advertisement
+    Advertisement
 </div>
 
-<main class="container" id="tools">
+<main class="container">
 
-  <div class="section-title">
-    <h2>Free Online Tools</h2>
-    <p>Choose a tool and process your files instantly.</p>
-  </div>
+<!-- IMAGE TO PDF -->
 
-  <div class="grid">
+<section class="card">
 
-    <!-- IMAGE TO PDF -->
-    <div class="card">
-
-      <div class="icon">🖼️</div>
-
-      <h3>Image → PDF</h3>
-
-      <p>
-        Combine one or multiple JPG, PNG or WebP images into one PDF.
-      </p>
-
-      <input
-        type="file"
-        id="imgPdfFiles"
-        accept="image/*"
-        multiple
-      >
-
-      <button onclick="imageToPDF()">
-        Create PDF
-      </button>
-
-      <div id="imgPdfStatus" class="status"></div>
-
-      <div id="imgPdfResult" class="result"></div>
-
-    </div>
-
-
-    <!-- COMPRESS IMAGE -->
-    <div class="card">
-
-      <div class="icon">🗜️</div>
-
-      <h3>Compress Image</h3>
-
-      <p>
-        Reduce image file size while keeping good visual quality.
-      </p>
-
-      <input
-        type="file"
-        id="compressFile"
-        accept="image/*"
-      >
-
-      <select id="compressQuality">
-        <option value="0.85">High quality</option>
-        <option value="0.70" selected>Balanced</option>
-        <option value="0.50">Small size</option>
-        <option value="0.35">Very small</option>
-      </select>
-
-      <button onclick="compressImage()">
-        Compress Image
-      </button>
-
-      <img id="compressPreview" class="preview">
-
-      <div id="compressStatus" class="status"></div>
-
-      <div id="compressResult" class="result"></div>
-
-    </div>
-
-
-    <!-- IMAGE CONVERTER -->
-    <div class="card">
-
-      <div class="icon">🔄</div>
-
-      <h3>JPG / PNG / WebP Converter</h3>
-
-      <p>
-        Convert images between JPG, PNG and WebP formats.
-      </p>
-
-      <input
-        type="file"
-        id="convertFile"
-        accept="image/*"
-      >
-
-      <select id="convertFormat">
-        <option value="image/jpeg">JPG</option>
-        <option value="image/png">PNG</option>
-        <option value="image/webp">WebP</option>
-      </select>
-
-      <button onclick="convertImage()">
-        Convert Image
-      </button>
-
-      <div id="convertStatus" class="status"></div>
-
-      <div id="convertResult" class="result"></div>
-
-    </div>
-
-
-    <!-- MERGE PDF -->
-    <div class="card">
-
-      <div class="icon">📑</div>
-
-      <h3>Merge PDF</h3>
-
-      <p>
-        Combine multiple PDF files into one PDF.
-      </p>
-
-      <input
-        type="file"
-        id="mergeFiles"
-        accept="application/pdf"
-        multiple
-      >
-
-      <button onclick="mergePDF()">
-        Merge PDFs
-      </button>
-
-      <div id="mergeStatus" class="status"></div>
-
-      <div id="mergeResult" class="result"></div>
-
-    </div>
-
-
-    <!-- SPLIT PDF -->
-    <div class="card">
-
-      <div class="icon">✂️</div>
-
-      <h3>Split PDF</h3>
-
-      <p>
-        Split a PDF into individual pages.
-      </p>
-
-      <input
-        type="file"
-        id="splitFile"
-        accept="application/pdf"
-      >
-
-      <button onclick="splitPDF()">
-        Split PDF
-      </button>
-
-      <div id="splitStatus" class="status"></div>
-
-      <div id="splitResult" class="result"></div>
-
-    </div>
-
-
-    <!-- PDF TO IMAGES -->
-    <div class="card">
-
-      <div class="icon">📄</div>
-
-      <h3>PDF → Images</h3>
-
-      <p>
-        Convert PDF pages into PNG images.
-      </p>
-
-      <input
-        type="file"
-        id="pdfImageFile"
-        accept="application/pdf"
-      >
-
-      <button onclick="pdfToImages()">
-        Convert to Images
-      </button>
-
-      <div id="pdfImageStatus" class="status"></div>
-
-      <div id="pdfImageResult" class="result"></div>
-
-    </div>
-
-
-    <!-- PDF RESAVE -->
-    <div class="card full">
-
-      <div class="icon">🗜️</div>
-
-      <h3>Optimize / Re-save PDF</h3>
-
-      <p>
-        Re-save a PDF using the browser. This can reduce some unnecessary
-        document overhead, although it is not a guaranteed size reduction
-        for every PDF.
-      </p>
-
-      <input
-        type="file"
-        id="optimizeFile"
-        accept="application/pdf"
-      >
-
-      <button onclick="optimizePDF()">
-        Optimize PDF
-      </button>
-
-      <div id="optimizeStatus" class="status"></div>
-
-      <div id="optimizeResult" class="result"></div>
-
-    </div>
-
-  </div>
-
-
-  <div class="ad">
-    Advertisement
-  </div>
-
-
-  <section class="info" id="about">
-
-    <h2>About Smart PDF Toolkit</h2>
+    <h2>🖼️ Image → PDF</h2>
 
     <p>
-      Smart PDF Toolkit is a browser-based collection of simple PDF
-      and image utilities. The goal is to make common file tasks
-      easy on both mobile phones and computers.
+        Select one or multiple images and combine them into one PDF.
     </p>
 
-    <p>
-      Whenever possible, file processing happens locally in your browser.
-      Files are not intentionally uploaded to our own server by these tools.
-    </p>
-
-  </section>
-
-
-  <section class="info" id="privacy">
-
-    <h2>Privacy Policy</h2>
-
-    <p>
-      Smart PDF Toolkit provides browser-based file utilities.
-      The tools on this page are designed to process selected files
-      locally in your browser.
-    </p>
-
-    <p>
-      We do not intentionally collect the contents of files processed
-      by the client-side tools.
-    </p>
-
-    <p>
-      Advertising services such as Google AdSense, when enabled,
-      may use cookies or similar technologies according to their
-      own policies and applicable consent requirements.
-    </p>
-
-    <p>
-      This page is a starter privacy policy and should be reviewed
-      and customized before using advertising or publishing the site
-      commercially.
-    </p>
-
-  </section>
-
-
-  <section class="info" id="terms">
-
-    <h2>Terms of Use</h2>
-
-    <ul>
-      <li>Use the tools only for lawful purposes.</li>
-      <li>Do not upload or process files that you do not have permission to use.</li>
-      <li>Results may vary depending on the file and browser.</li>
-      <li>Always keep a backup of important documents.</li>
-      <li>The service is provided on an “as available” basis.</li>
-    </ul>
-
-  </section>
-
-</main>
-
-
-<footer>
-
-  <div class="footer-inner">
-
-    <strong>Smart PDF Toolkit</strong>
-
-    <div class="footer-links">
-      <a href="#about">About</a>
-      <a href="#privacy">Privacy Policy</a>
-      <a href="#terms">Terms</a>
-      <a href="#tools">Tools</a>
+    <div class="filebox">
+        <input
+            id="pdfFiles"
+            type="file"
+            accept="image/*"
+            multiple
+        >
     </div>
 
-    <div class="small">
-      © 2026 Smart PDF Toolkit. All rights reserved.
-    </div>
+    <div id="pdfPreview" class="preview"></div>
 
-  </div>
+    <div class="row">
 
-</footer>
+        <div>
+            <label for="pageSize">Page Size</label>
 
+            <select id="pageSize">
+                <option value="a4">A4</option>
+                <option value="fit">Fit Image</option>
+            </select>
+        </div>
 
-<script>
+        <div>
+            <label for="orientation">Orientation</label>
 
-/* ============================================================
-   COMMON HELPERS
-============================================================ */
-
-function showStatus(id,text){
-  const el=document.getElementById(id);
-  el.style.display="block";
-  el.textContent=text;
-}
-
-function clearResult(id){
-  document.getElementById(id).innerHTML="";
-}
-
-function downloadBlob(blob,name){
-  const url=URL.createObjectURL(blob);
-
-  const a=document.createElement("a");
-  a.href=url;
-  a.download=name;
-  a.textContent="⬇️ Download "+name;
-  a.className="download";
-
-  return a;
-}
-
-
-/* ============================================================
-   IMAGE → PDF
-============================================================ */
-
-async function imageToPDF(){
-
-  const input=document.getElementById("imgPdfFiles");
-  const files=[...input.files];
-
-  clearResult("imgPdfResult");
-
-  if(!files.length){
-    showStatus("imgPdfStatus","Please select one or more images.");
-    return;
-  }
-
-  try{
-
-    showStatus("imgPdfStatus","Creating PDF...");
-
-    const pdf=await PDFLib.PDFDocument.create();
-
-    for(const file of files){
-
-      const bytes=new Uint8Array(await file.arrayBuffer());
-
-      let image;
-
-      if(file.type==="image/jpeg"){
-        image=await pdf.embedJpg(bytes);
-      }
-      else{
-        image=await pdf.embedPng(bytes);
-      }
-
-      const maxWidth=595;
-      const maxHeight=842;
-
-      const scale=Math.min(
-        maxWidth/image.width,
-        maxHeight/image.height,
-        1
-      );
-
-      const width=image.width*scale;
-      const height=image.height*scale;
-
-      const page=pdf.addPage([width,height]);
-
-      page.drawImage(image,{
-        x:0,
-        y:0,
-        width,
-        height
-      });
-    }
-
-    const output=await pdf.save();
-
-    const blob=new Blob([output],{
-      type:"application/pdf"
-    });
-
-    document.getElementById("imgPdfResult")
-      .appendChild(
-        downloadBlob(blob,"smart-images.pdf")
-      );
-
-    showStatus("imgPdfStatus","PDF created successfully.");
-
-  }catch(error){
-
-    console.error(error);
-
-    showStatus(
-      "imgPdfStatus",
-      "Could not create PDF. Please check the image format."
-    );
-  }
-}
-
-
-/* ============================================================
-   COMPRESS IMAGE
-============================================================ */
-
-async function compressImage(){
-
-  const file=document.getElementById("compressFile").files[0];
-
-  clearResult("compressResult");
-
-  if(!file){
-    showStatus("compressStatus","Please select an image.");
-    return;
-  }
-
-  try{
-
-    showStatus("compressStatus","Compressing image...");
-
-    const quality=parseFloat(
-      document.getElementById("compressQuality").value
-    );
-
-    const bitmap=await createImageBitmap(file);
-
-    const maxDimension=2000;
-
-    let width=bitmap.width;
-    let height=bitmap.height;
-
-    if(Math.max(width,height)>maxDimension){
-
-      const ratio=maxDimension/Math.max(width,height);
-
-      width=Math.round(width*ratio);
-      height=Math.round(height*ratio);
-    }
-
-    const canvas=document.createElement("canvas");
-
-    canvas.width=width;
-    canvas.height=height;
-
-    const ctx=canvas.getContext("2d");
-
-    ctx.drawImage(bitmap,0,0,width,height);
-
-    const blob=await new Promise(resolve=>{
-      canvas.toBlob(
-        resolve,
-        "image/jpeg",
-        quality
-      );
-    });
-
-    const preview=document.getElementById("compressPreview");
-
-    preview.src=URL.createObjectURL(blob);
-    preview.style.display="block";
-
-    const oldSize=(file.size/1024/1024).toFixed(2);
-    const newSize=(blob.size/1024/1024).toFixed(2);
-
-    document.getElementById("compressResult")
-      .innerHTML=
-      "<p class='note'>Original: "+oldSize+
-      " MB | New: "+newSize+" MB</p>";
-
-    document.getElementById("compressResult")
-      .appendChild(
-        downloadBlob(blob,"compressed-image.jpg")
-      );
-
-    showStatus("compressStatus","Compression completed.");
-
-  }catch(error){
-
-    console.error(error);
-
-    showStatus(
-      "compressStatus",
-      "Could not compress this image."
-    );
-  }
-}
-
-
-/* ============================================================
-   IMAGE CONVERTER
-============================================================ */
-
-async function convertImage(){
-
-  const file=document.getElementById("convertFile").files[0];
-
-  clearResult("convertResult");
-
-  if(!file){
-    showStatus("convertStatus","Please select an image.");
-    return;
-  }
-
-  try{
-
-    showStatus("convertStatus","Converting...");
-
-    const format=document.getElementById("convertFormat").value;
-
-    const bitmap=await createImageBitmap(file);
-
-    const canvas=document.createElement("canvas");
-
-    canvas.width=bitmap.width;
-    canvas.height=bitmap.height;
-
-    const ctx=canvas.getContext("2d");
-
-    if(format==="image/jpeg"){
-      ctx.fillStyle="#ffffff";
-      ctx.fillRect(0,0,canvas.width,canvas.height);
-    }
-
-    ctx.drawImage(bitmap,0,0);
-
-    const blob=await new Promise(resolve=>{
-      canvas.toBlob(resolve,format,0.92);
-    });
-
-    let extension="jpg";
-
-    if(format==="image/png") extension="png";
-    if(format==="image/webp") extension="webp";
-
-    document.getElementById("convertResult")
-      .appendChild(
-        downloadBlob(
-          blob,
-          "converted-image."+extension
-        )
-      );
-
-    showStatus("convertStatus","Conversion completed.");
-
-  }catch(error){
-
-    console.error(error);
-
-    showStatus(
-      "convertStatus",
-      "Could not convert this image."
-    );
-  }
-}
-
-
-/* ============================================================
-   MERGE PDF
-============================================================ */
-
-async function mergePDF(){
-
-  const files=[
-    ...document.getElementById("mergeFiles").files
-  ];
-
-  clearResult("mergeResult");
-
-  if(files.length<2){
-
-    showStatus(
-      "mergeStatus",
-      "Please select at least two PDF files."
-    );
-
-    return;
-  }
-
-  try{
-
-    showStatus("mergeStatus","Merging PDFs...");
-
-    const merged=await PDFLib.PDFDocument.create();
-
-    for(const file of files){
-
-      const bytes=await file.arrayBuffer();
-
-      const source=await PDFLib.PDFDocument.load(bytes);
-
-      const pages=await merged.copyPages(
-        source,
-        source.getPageIndices()
-      );
-
-      pages.forEach(page=>{
-        merged.addPage(page);
-      });
-    }
-
-    const output=await merged.save();
-
-    const blob=new Blob([output],{
-      type:"application/pdf"
-    });
-
-    document.getElementById("mergeResult")
-      .appendChild(
-        downloadBlob(blob,"merged.pdf")
-      );
-
-    showStatus(
-      "mergeStatus",
-      "PDFs merged successfully."
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    showStatus(
-      "mergeStatus",
-      "Could not merge these PDFs. Some PDFs may be encrypted or unsupported."
-    );
-  }
-}
-
-
-/* ============================================================
-   SPLIT PDF
-============================================================ */
-
-async function splitPDF(){
-
-  const file=document.getElementById("splitFile").files[0];
-
-  clearResult("splitResult");
-
-  if(!file){
-
-    showStatus(
-      "splitStatus",
-      "Please select a PDF."
-    );
-
-    return;
-  }
-
-  try{
-
-    showStatus(
-      "splitStatus",
-      "Splitting PDF..."
-    );
-
-    const bytes=await file.arrayBuffer();
-
-    const source=await PDFLib.PDFDocument.load(bytes);
-
-    const count=source.getPageCount();
-
-    const result=document.getElementById("splitResult");
-
-    for(let i=0;i<count;i++){
-
-      const pdf=await PDFLib.PDFDocument.create();
-
-      const [page]=await pdf.copyPages(
-        source,
-        [i]
-      );
-
-      pdf.addPage(page);
-
-      const output=await pdf.save();
-
-      const blob=new Blob([output],{
-        type:"application/pdf"
-      });
-
-      result.appendChild(
-        downloadBlob(
-          blob,
-          "page-"+(i+1)+".pdf"
-        )
-      );
-    }
-
-    showStatus(
-      "splitStatus",
-      count+" page(s) created."
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    showStatus(
-      "splitStatus",
-      "Could not split this PDF."
-    );
-  }
-}
-
-
-/* ============================================================
-   PDF → IMAGES
-   Uses PDF.js module dynamically
-============================================================ */
-
-async function pdfToImages(){
-
-  const file=document.getElementById("pdfImageFile").files[0];
-
-  clearResult("pdfImageResult");
-
-  if(!file){
-
-    showStatus(
-      "pdfImageStatus",
-      "Please select a PDF."
-    );
-
-    return;
-  }
-
-  try{
-
-    showStatus(
-      "pdfImageStatus",
-      "Loading PDF..."
-    );
-
-    const pdfjs=await import(
-      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs"
-    );
-
-    pdfjs.GlobalWorkerOptions.workerSrc=
-      "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs";
-
-    const bytes=await file.arrayBuffer();
-
-    const pdf=await pdfjs.getDocument({
-      data:bytes
-    }).promise;
-
-    const result=document.getElementById(
-      "pdfImageResult"
-    );
-
-    for(let i=1;i<=pdf.numPages;i++){
-
-      showStatus(
-        "pdfImageStatus",
-        "Rendering page "+i+" of "+pdf.numPages+"..."
-      );
-
-      const page=await pdf.getPage(i);
-
-      const viewport=page.getViewport({
-        scale:1.5
-      });
-
-      const canvas=document.createElement("canvas");
-
-      canvas.width=viewport.width;
-      canvas.height=viewport.height;
-
-      const ctx=canvas.getContext("2d");
-
-      await page.render({
-        canvasContext:ctx,
-        viewport
-      }).promise;
-
-      const blob=await new Promise(resolve=>{
-        canvas.toBlob(
-          resolve,
-          "image/png"
-        );
-      });
-
-      const img=document.createElement("img");
-
-      img.src=URL.createObjectURL(blob);
-      img.className="preview";
-      img.style.display="block";
-
-      result.appendChild(img);
-
-      result.appendChild(
-        downloadBlob(
-          blob,
-          "pdf-page-"+i+".png"
-        )
-      );
-    }
-
-    showStatus(
-      "pdfImageStatus",
-      "All pages converted."
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    showStatus(
-      "pdfImageStatus",
-      "Could not convert this PDF. Encrypted PDFs may not work."
-    );
-  }
-}
-
-
-/* ============================================================
-   OPTIMIZE / RE-SAVE PDF
-============================================================ */
-
-async function optimizePDF(){
-
-  const file=document.getElementById("optimizeFile").files[0];
-
-  clearResult("optimizeResult");
-
-  if(!file){
-
-    showStatus(
-      "optimizeStatus",
-      "Please select a PDF."
-    );
-
-    return;
-  }
-
-  try{
-
-    showStatus(
-      "optimizeStatus",
-      "Optimizing PDF..."
-    );
-
-    const bytes=await file.arrayBuffer();
-
-    const pdf=await PDFLib.PDFDocument.load(bytes);
-
-    const output=await pdf.save({
-      useObjectStreams:true,
-      addDefaultPage:false
-    });
-
-    const blob=new Blob([output],{
-      type:"application/pdf"
-    });
-
-    const oldSize=(file.size/1024).toFixed(1);
-    const newSize=(blob.size/1024).toFixed(1);
-
-    document.getElementById("optimizeResult")
-      .innerHTML=
-      "<p class='note'>Original: "+
-      oldSize+
-      " KB | New: "+
-      newSize+
-      " KB</p>";
-
-    document.getElementById("optimizeResult")
-      .appendChild(
-        downloadBlob(
-          blob,
-          "optimized.pdf"
-        )
-      );
-
-    showStatus(
-      "optimizeStatus",
-      "PDF re-saved successfully."
-    );
-
-  }catch(error){
-
-    console.error(error);
-
-    showStatus(
-      "optimizeStatus",
-      "Could not optimize this PDF."
-    );
-  }
-}
-
-</script>
-
-</body>
-</html>
+            <select id="orientation">
+                <option value="auto">Auto</option>
+                <option value="portrait">
